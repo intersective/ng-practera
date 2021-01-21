@@ -11,6 +11,12 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "paths": {
+      "ng-practera": [
+        "dist/ng-practera/ng-practera",
+        "dist/ng-practera"
+      ]
+    },
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,

@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ng-practera": {
+      "projectType": "library",
+      "root": "projects/ng-practera",
+      "sourceRoot": "projects/ng-practera/src",
+      "prefix": "prac",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-practera/tsconfig.lib.json",
+            "project": "projects/ng-practera/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-practera/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-practera/src/test.ts",
+            "tsConfig": "projects/ng-practera/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-practera/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-practera/tsconfig.lib.json",
+              "projects/ng-practera/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-practera"
 }
