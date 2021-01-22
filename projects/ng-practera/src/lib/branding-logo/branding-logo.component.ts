@@ -4,7 +4,7 @@ import { BrowserStorageService } from '../services/storage/storage.service';
 @Component({
   selector: 'prac-branding-logo',
   templateUrl: './branding-logo.component.html',
-  styleUrls: ['./branding-logo.component.css']
+  styleUrls: ['./branding-logo.component.scss']
 })
 export class BrandingLogoComponent implements OnInit {
 
