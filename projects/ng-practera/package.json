@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^11.1.0",
-    "@angular/core": "^11.1.0"
+    "@angular/core": "^11.1.0",
+    "@ionic/angular": "^5.5.2"
   },
   "dependencies": {
     "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@ionic/angular": "^5.5.2"
   }
 }

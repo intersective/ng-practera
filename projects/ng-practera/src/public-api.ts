@@ -5,3 +5,4 @@
 export * from './lib/ng-practera.service';
 export * from './lib/ng-practera.component';
 export * from './lib/ng-practera.module';
+export * from './lib/login/login.component';
