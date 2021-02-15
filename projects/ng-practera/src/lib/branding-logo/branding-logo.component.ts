@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BrowserStorageService } from '../services/storage/storage.service';
 
 @Component({
@@ -6,11 +6,10 @@ import { BrowserStorageService } from '../services/storage/storage.service';
   templateUrl: './branding-logo.component.html',
   styleUrls: ['./branding-logo.component.scss']
 })
-export class BrandingLogoComponent implements OnInit {
+export class BrandingLogoComponent {
+
+  @Input() bradingLogo = '';
 
   constructor(public storage: BrowserStorageService) { }
-
-  ngOnInit(): void {
-  }
 
 }

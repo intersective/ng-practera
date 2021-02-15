@@ -1,6 +1,3 @@
-<div class="div-logo">
-  <!-- <prac-branding-logo></prac-branding-logo> -->
-</div>
 <div class="div-after-logo">
   <form (ngSubmit)="login()" [formGroup]="loginForm" (keyup.enter)="login()">
     <ion-list class="ion-margin list">
@@ -9,7 +6,7 @@
           name="username"
           formControlName="username"
           required
-          autocomplete="on"
+          autocomplete="off"
           inputmode="email"
           type="email"
           placeholder="Username"
@@ -19,7 +16,7 @@
         <ion-input
           name="password"
           formControlName="password"
-          autocomplete="on"
+          autocomplete="off"
           inputmode="password"
           required
           [type]="showPassword ? 'text' : 'password'"
@@ -44,7 +41,7 @@
   </form>
 </div>
 <div class="text-split">
-  <a class="subtitle-2">Problem signing in?</a>
+  <a class="subtitle-2" (click)="forgotPassowrdClick()">Problem signing in?</a>
 </div>
 <div class="powered-by">
   <a>Powered by</a><img alt="practera logo" src="../assets/logo.svg" height="25" class="img-inline">
