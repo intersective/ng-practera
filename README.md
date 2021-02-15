@@ -1,14 +1,14 @@
-#@practera/ng-practera
+# @practera/ng-practera
 
 Angular components library made using Ionic components for Practera.
 
 This angular library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
 
-##Install
+## Install
 ```
 $ npm install @practera/ng-practera
 ```
-##Import
+## Import
 import the component in the module file that you need to use it.
 ``` ts
 import { NgPracteraModule } from '@practera/ng-practera';
@@ -22,7 +22,7 @@ put `NgPracteraModule` under `imports` of the module.
 })
 ```
 
-##Components
+## Components
 - **Branding logo**
   Component will show the priview of the image pass to it. It mainly use for custom branding in authendication pages like login, forgot passowrd, etc to show client logo on the page.
   ```html

@@ -1,6 +1,21 @@
 {
   "name": "ng-practera",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Angular/ Ionic UI components for practera",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intersective/ng-practera.git"
+  },
+  "bugs": {
+    "url": "https://github.com/intersective/ng-practera/issues"
+  },
+  "homepage": "https://github.com/intersective/ng-practera#readme",
+  "keywords": [
+    "practera",
+    "intersective",
+    "ng-practera"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
