@@ -1,0 +1,48 @@
+<div class="div-after-logo">
+  <form (ngSubmit)="login()" [formGroup]="loginForm" (keyup.enter)="login()">
+    <ion-list class="ion-margin list">
+      <ion-item>
+        <ion-input
+          name="username"
+          formControlName="username"
+          required
+          autocomplete="off"
+          inputmode="email"
+          type="email"
+          placeholder="Username"
+          ></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-input
+          name="password"
+          formControlName="password"
+          autocomplete="off"
+          inputmode="password"
+          required
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          ></ion-input>
+          <ion-button (click)="showPassword = !showPassword" fill="clear">
+            <ion-icon class="icon" slot="end" [name]="showPassword ? 'eye' : 'eye-off'"></ion-icon>
+          </ion-button>
+      </ion-item>
+    </ion-list>
+    <ion-button
+    class="button"
+      shape="round"
+      color="primary"
+      [disabled]="!loginForm.valid || isLoggingIn"
+      type="submit"
+      expand="full"
+      >
+      <ng-container *ngIf="!isLoggingIn">LOGIN</ng-container>
+      <ng-container *ngIf="isLoggingIn">LOGGING IN...</ng-container>
+    </ion-button>
+  </form>
+</div>
+<div class="text-split">
+  <a class="subtitle-2" (click)="forgotPassowrdClick()">Problem signing in?</a>
+</div>
+<div class="powered-by">
+  <a>Powered by</a><img alt="practera logo" src="../assets/logo.svg" height="25" class="img-inline">
+</div>

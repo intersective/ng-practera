@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
-import { NgPracteraComponent } from './ng-practera.component';
-
-
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { BrandingLogoComponent } from './branding-logo/branding-logo.component';
 
 @NgModule({
-  declarations: [NgPracteraComponent],
+  declarations: [LoginComponent, BrandingLogoComponent],
   imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  exports: [NgPracteraComponent]
+  exports: [LoginComponent, BrandingLogoComponent]
 })
-export class NgPracteraModule { }
+export class NgPracteraModule {}

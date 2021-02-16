@@ -1,6 +1,21 @@
 {
   "name": "ng-practera",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Angular/ Ionic UI components for practera",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intersective/ng-practera.git"
+  },
+  "bugs": {
+    "url": "https://github.com/intersective/ng-practera/issues"
+  },
+  "homepage": "https://github.com/intersective/ng-practera#readme",
+  "keywords": [
+    "practera",
+    "intersective",
+    "ng-practera"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -15,9 +30,13 @@
     "@angular/compiler": "~11.1.0",
     "@angular/core": "~11.1.0",
     "@angular/forms": "~11.1.0",
+    "@angular/http": "^7.2.16",
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
+    "@ionic/angular": "^5.5.2",
+    "@types/lodash": "^4.14.168",
+    "lodash": "^4.17.20",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

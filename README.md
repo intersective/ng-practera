@@ -1,27 +1,62 @@
-# NgPractera
+# @practera/ng-practera
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
+Angular components library made using Ionic components for Practera.
 
-## Development server
+This angular library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Install
+```
+$ npm install @practera/ng-practera
+```
+## Import
+import the component in the module file that you need to use it.
+``` ts
+import { NgPracteraModule } from '@practera/ng-practera';
+```
+put `NgPracteraModule` under `imports` of the module.
+```ts
+@NgModule({
+  imports: [
+    NgPracteraModule
+  ]
+})
+```
 
-## Code scaffolding
+## Components
+- **Branding logo**
+  Component will show the priview of the image pass to it. It mainly use for custom branding in authendication pages like login, forgot passowrd, etc to show client logo on the page.
+  ```html
+  <prac-branding-logo></prac-branding-logo>
+  ```
+  **properties**
+  | Property name | Description |
+  | :------------ | :----------- |
+  | bradingLogo | logo for custom branding. `Not Optional` |
+  ```html
+  <prac-branding-logo [bradingLogo]="customeLogo"></prac-branding-logo>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  <prac-branding-logo [bradingLogo]="'/assets/logo.svg'"></prac-branding-logo>
+  ```
+- **Login**
+  Component is the login UI. it have login form (text fields, buttons), forgot passowrd link and 'Powered by practera' section.
+  ```html
+  <prac-login></prac-login>
+  ```
+  **properties**
+  | Property name | Description      |
+  | :------------ | :--------------- |
+  | callApi | Boolean to enable and disable API calling of the component default value is `true` |
+  | successCallBack | Menthod to call after login api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
+  | errorCallBack | Menthod to call after login api return error response or any other error. `Not Optional` |
+  | forgotPasswordCallBack | Menthod to call after click on forgot password link. `Not Optional`  |
+  | loginClickCallBack | Menthod to call after click on login button. Optional property, if `callApi` is `false` this need to pass to get login button click. |
 
-## Build
+  ```html
+  <prac-login (successCallBack)="successCallBack($event)" (errorCallBack)="errorCallBack($event)"
+  (forgotPasswordCallBack)="forgotPasswordCallBack($event)"></prac-login>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+  <prac-login [callApi]="false" (errorCallBack)="errorCallBack($event)"
+  (forgotPasswordCallBack)="forgotPasswordCallBack($event)" (loginClickCallBack)="loginClickCallBack($event)"></prac-login>
+  ```
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Forgot Password**
