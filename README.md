@@ -60,3 +60,23 @@ put `NgPracteraModule` under `imports` of the module.
   ```
 
 - **Forgot Password**
+  Component is the forgot passowrd UI. it have text field to enter email, send email button, link to go back to login and 'Powered by practera' section.
+  ```html
+  <prac-forgot-password></prac-forgot-password>
+  ```
+  **properties**
+  | Property name | Description      |
+  | :------------ | :--------------- |
+  | callApi | Boolean to enable and disable API calling of the component default value is `true` |
+  | successCallBack | Menthod to call after login api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
+  | errorCallBack | Menthod to call after login api return error response or any other error. `Not Optional` |
+  | sendEmailClickCallBack | Menthod to call after click on send email button. Optional property, if `callApi` is `false` this need to pass to get send email button click.  |
+  | loginClickCallBack | Menthod to call after click on login link. `Not Optional` |
+
+  ```html
+  <prac-forgot-password (successCallBack)="successCallBack($event)" (errorCallBack)="errorCallBack($event)" (sendEmailClickCallBack)="sendEmailClickCallBack($event)"></prac-forgot-password>
+
+  <prac-forgot-password [callApi]="false" (errorCallBack)="errorCallBack($event)"
+  (sendEmailClickCallBack)="sendEmailClickCallBack($event)" (loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
+  ```
+  

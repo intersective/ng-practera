@@ -36,11 +36,9 @@ export class LoginComponent {
       return null;
     }
     if (!this.callApi && this.loginClickCallBack) {
-      console.log('login click - API call disable');
       this.loginClickCallBack.emit(true);
       return null;
     }
-    console.log('login click - API call enable');
     this.isLoggingIn = true;
     return this.practeraService.login({
       username: this.loginForm.value.username,
@@ -64,7 +62,8 @@ export class LoginComponent {
   }
 
   private _handleError(type: string, error?: any): void {
-    const statusCode = error.status;
+    this.isLoggingIn = false;
+    const statusCode = error ? error.status : null;
     const errorObject = {
       type,
       message: 'Internal error, please try again.'
