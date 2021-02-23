@@ -1,0 +1,23 @@
+<div class="div-after-logo">
+  <p class="headline-6 black">Enter your verification code</p>
+  <p class="body-1 gray-1">Please enter the verification code provided by your authy app or sent via SMS.</p>
+  <ion-button class="sms-button" (click)="sendSMS()" size="small" color="primary">
+   send SMS
+  </ion-button>
+  <ion-list class="ion-margin ion-no-padding list">
+    <ion-item lines="none">
+      <ion-input name="verifyCode"
+        [(ngModel)]="verifyCode" class="subtitle-1 gray-1" required
+        type="text" placeholder="Verification code">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="clearfix"></div>
+  <ion-button class="button" (click)="codeVerification()" shape="round" color="primary" expand="full" [disabled]="!verifyCode || isVerifying">
+    <ng-container *ngIf="!isVerifying">Verify code</ng-container>
+    <ng-container *ngIf="isVerifying">Verifying...</ng-container>
+  </ion-button>
+  <div class="powered-by">
+    <a>Powered by</a><img alt="Practera logo" src="/assets/logo.svg" height="25" class="img-inline">
+  </div>
+</div>
