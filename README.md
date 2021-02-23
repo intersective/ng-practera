@@ -23,7 +23,7 @@ put `NgPracteraModule` under `imports` of the module.
 ```
 
 ## Components
-####Branding logo
+#### Branding logo
 Component will show the priview of the image pass to it. It mainly use for custom branding in authendication pages like login, forgot passowrd, etc to show client logo on the page.
 ```html
 <prac-branding-logo></prac-branding-logo>
@@ -37,7 +37,7 @@ Component will show the priview of the image pass to it. It mainly use for custo
 
 <prac-branding-logo [bradingLogo]="'/assets/logo.svg'"></prac-branding-logo>
 ```
-####Login
+#### Login
 Component is the login UI. it have login form (text fields, buttons), forgot passowrd link and 'Powered by practera' section.
 ```html
 <prac-login></prac-login>
@@ -64,7 +64,7 @@ Component is the login UI. it have login form (text fields, buttons), forgot pas
 (loginClickCallBack)="loginClickCallBack($event)"></prac-login>
 ```
 
-####Forgot Password
+#### Forgot Password
 Component is the forgot passowrd UI. it have text field to enter email, send email button, link to go back to login and 'Powered by practera' section.
 ```html
 <prac-forgot-password></prac-forgot-password>
@@ -92,7 +92,7 @@ Component is the forgot passowrd UI. it have text field to enter email, send ema
 (loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
 ```
 
-####MFA Register
+#### MFA Register
 Component is the MFA Register page UI. it have dropdown to select contury, text field to type mobile number, register button, link to go back to login and 'Powered by practera' section.
 ```html
 <prac-mfa-register></prac-mfa-register>
@@ -119,7 +119,7 @@ Component is the MFA Register page UI. it have dropdown to select contury, text 
 (loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
 ```
 
-####MFA Verify
+#### MFA Verify
 Component is the MFA Verify page UI. it have button to send SMS, text field to type verify code, 'Verify code' button and 'Powered by practera' section.
 ```html
 <prac-mfa-verify></prac-mfa-verify>
