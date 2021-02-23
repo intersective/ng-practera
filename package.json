@@ -19,9 +19,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "publish": "cd dist/ng-practera && npm publish"
   },
   "private": true,
   "dependencies": {

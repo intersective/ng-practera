@@ -9,13 +9,22 @@ import { MfaRegisterComponent } from './mfa-register/mfa-register.component';
 import { MfaVerifyComponent } from './mfa-verify/mfa-verify.component';
 
 @NgModule({
-  declarations: [LoginComponent, BrandingLogoComponent, ForgotPasswordComponent, MfaRegisterComponent, MfaVerifyComponent],
+  declarations: [
+    LoginComponent,
+    BrandingLogoComponent,
+    ForgotPasswordComponent,
+    MfaRegisterComponent,
+    MfaVerifyComponent],
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [LoginComponent, BrandingLogoComponent, ForgotPasswordComponent, MfaRegisterComponent, MfaVerifyComponent]
+  exports: [LoginComponent,
+    BrandingLogoComponent,
+    ForgotPasswordComponent,
+    MfaRegisterComponent,
+    MfaVerifyComponent]
 })
 export class NgPracteraModule {}
