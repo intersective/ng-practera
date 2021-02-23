@@ -82,7 +82,8 @@ Component is the forgot passowrd UI. it have text field to enter email, send ema
 <prac-forgot-password 
 (successCallBack)="successCallBack($event)" 
 (errorCallBack)="errorCallBack($event)" 
-(sendEmailClickCallBack)="sendEmailClickCallBack($event)"></prac-forgot-password>
+(sendEmailClickCallBack)="sendEmailClickCallBack($event)"
+(loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
 
 <prac-forgot-password 
 [callApi]="false" 
