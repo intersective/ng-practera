@@ -21,6 +21,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
+    "sonar-test": "ng test --no-watch --code-coverage --browsers ChromeHeadless --karmaConfig=projects/ng-practera/karma.conf.sonar.js",
     "lint": "ng lint",
     "publish": "cd dist/ng-practera && npm publish"
   },
@@ -56,6 +57,8 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-sonarqube-unit-reporter": "0.0.23",
     "ng-packagr": "^11.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",

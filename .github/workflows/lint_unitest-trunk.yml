@@ -41,18 +41,18 @@ jobs:
             ${{ runner.os }}-
 
 
-      # Install Dependencies 
+      # Install Dependencies
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run:  npm install
-      
+
       # # Run lint test
       # - name: Run lint Test if present only
       #   run:  npm run lint
 
-      # Run unit test 
+      # Run unit test
       - name: Run unit test if present only
-        run:  npm run test
+        run:  npm run sonar-test
 
       # Run Sonarcloudscan
       - name: SonarCloud Scan
@@ -60,7 +60,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-       
+
       # Run Slack Notification
       - name: Slack Notification
         if: always() # Pick up events even if the job fails or is canceled.
@@ -83,7 +83,7 @@ jobs:
               color: '${{ job.status }}' === 'success' ? 'good' : ${{ job.status }}' === 'failure' ? 'danger' : 'warning',
               text:
              `${process.env.AS_REPO}\n
-              ${process.env.AS_COMMIT}\n 
+              ${process.env.AS_COMMIT}\n
               ${process.env.AS_EVENT_NAME}\n
               @${process.env.AS_REF}\n
               @${process.env.AS_WORKFLOW}\n
