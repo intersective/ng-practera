@@ -13,13 +13,13 @@ module.exports = function (config) {
     reporters: ['progress', 'sonarqubeUnit', 'coverage'],
 
     preprocessors: {
-      'src/**/*.js':   ['coverage'],
-      'src/**/*.ts':   ['coverage']
+      'projects/ng-practera/src/**/*.js':   ['coverage'],
+      'projects/ng-practera/src/**/*.ts':   ['coverage']
     },
 
     // optionally, configure the reporter
     coverageReporter: {
-      dir : path.join(__dirname, '../../coverage/ng-practera'),
+      dir : 'coverage/',
       reporters: [
         { type: 'text-summary' },
         { type: 'html', subdir: '.' },
@@ -36,7 +36,7 @@ module.exports = function (config) {
     //   'src/**/*.ts'
     //   // 'test/spec/**/*.ts'
     // ],
-    exclude: ['node_modules'],
+    exclude: ['node_modules', 'projects/ng-practera/node_modules'],
     // preprocessors: {'**src/**/*.ts': ['coverage'], '**src/*.ts': ['coverage']},
     plugins: [
       require('karma-jasmine'),
@@ -52,9 +52,9 @@ module.exports = function (config) {
     },
     sonarQubeUnitReporter: {
       sonarQubeVersion: 'LATEST',
-      outputFile: '../../coverage/ng-practera/test_report.xml',
+      outputFile: 'coverage/test_report.xml',
       overrideTestDescription: true,
-      testPaths: ['./src'],
+      testPaths: ['projects/ng-practera/src'],
       testFilePattern: '.spec.ts',
       useBrowserName: false
     },

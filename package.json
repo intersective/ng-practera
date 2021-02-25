@@ -21,7 +21,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
-    "sonar-test": "ng test --no-watch --code-coverage --browsers ChromeHeadless --karmaConfig=projects/ng-practera/karma.conf.sonar.js",
+    "sonar-test": "ng test --no-watch --code-coverage --browsers ChromeHeadless --karmaConfig=karma.conf.sonar.js",
     "lint": "ng lint",
     "publish": "cd dist/ng-practera && npm publish"
   },
