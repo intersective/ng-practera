@@ -19,6 +19,7 @@ jobs:
     #Global Env variables declare here
     env:
       SUBDOMAIN: ng-practera-publish
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     # Steps to execute in this job
     steps:
