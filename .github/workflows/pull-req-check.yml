@@ -1,27 +1,44 @@
-# GitHub Actions WorkFlow
+# GitHub Actions WorkFlow Name
 
-name: SonarCloud CI - Release Branch
+name: PULL REQUEST EVENT CHECK
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the develop branch
+#Event Trigger for this Workflow
+
 on:
   workflow_dispatch:
-  push:
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
-      - '.gitignore'
-    branches: [ 'release/*' ]
+  pull_request:
+    branches:
+      - 'develop'
+      - 'trunk'
+      - 'release/**'
+    types: [opened, synchronize, reopened]
+
+#Jobs to perform based on event occurred
 
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  pull-req-check:
+    name: pull-req-check
     runs-on: ubuntu-latest
+
+    #Global Env variables declare here
+    env:
+      SUBDOMAIN: ng-practera-publish
+
+    # Steps to execute in this job
     steps:
+
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+
+ 
       - name: Cache node modules
         uses: actions/cache@v2
         id: cache-node-modules
@@ -40,27 +57,33 @@ jobs:
             ${{ runner.os }}-
 
 
-      # Install Dependencies
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run:  npm install
+      
 
-      # # Run lint test
-      # - name: Run lint Test if present only
-      #   run:  npm run lint
+      # - name: create ENV file
+      #   run: |
+      #     cat >> .env <<EOF
+      #     ${{ secrets.NG_PRACTERA_DEFAULT_ENV }}
+      #     EOF
+  
+  
+      - name: Run lint test if present only
+        run:  npm run lint --if-present
 
-      # Run unit test
+    
       - name: Run unit test if present only
-        run:  npm run sonar-test
+        run:  npm run sonar-test --if-present
 
-      # Run Sonarcloudscan
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      
 
-      # Run Slack Notification
       - name: Slack Notification
         if: always() # Pick up events even if the job fails or is canceled.
         uses: 8398a7/action-slack@v3
@@ -69,10 +92,10 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }} # required
         with:
           status: ${{ job.status }}
-          author_name: GitHubAction CI for release branch
+          author_name: ${{ env.SUBDOMAIN }} - pull req event check status
           mention: 'here'
           if_mention: failure,cancelled
-          job_name: SonarCloud # Match the name above.
+          job_name: pull-req-check # Match the name above.
           fields: repo,commit,eventName,ref,workflow,message,author,job,took
           custom_payload: |
             {

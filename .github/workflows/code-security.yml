@@ -11,6 +11,10 @@ jobs:
     name: code-security
     runs-on: ubuntu-latest
 
+    #Global Env variables declare here
+    env:
+      SUBDOMAIN: ng-practera-publish
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -26,7 +30,6 @@ jobs:
         uses: github/codeql-action/analyze@v1
 
 
-      # Run Slack Notification
       - name: Slack Notification
         if: always() # Pick up events even if the job fails or is canceled.
         uses: 8398a7/action-slack@v3
@@ -35,10 +38,10 @@ jobs:
           MATRIX_CONTEXT: ${{ toJson(matrix) }} # required
         with:
           status: ${{ job.status }}
-          author_name: GitHubAction CI for code security
+          author_name: ${{ env.SUBDOMAIN }} - code security check
           mention: 'here'
           if_mention: failure,cancelled
-          job_name: code-security
+          job_name: pull-req-check # Match the name above.
           fields: repo,commit,eventName,ref,workflow,message,author,job,took
           custom_payload: |
             {
@@ -48,7 +51,7 @@ jobs:
               color: '${{ job.status }}' === 'success' ? 'good' : ${{ job.status }}' === 'failure' ? 'danger' : 'warning',
               text:
              `${process.env.AS_REPO}\n
-              ${process.env.AS_COMMIT}\n 
+              ${process.env.AS_COMMIT}\n
               ${process.env.AS_EVENT_NAME}\n
               @${process.env.AS_REF}\n
               @${process.env.AS_WORKFLOW}\n

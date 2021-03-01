@@ -6,10 +6,10 @@
 
 **Checklist:**
 
-- [x] Unit test completed?: (Y/N)
-- [x] Docs folder up to date?: (Y/N)
-- [x] Add if anything missed: (Y/N)
-- [x] When merging to trunk did you do a version bump in the package.json file? (Y/N)
+- [ x ] Unit test completed?: (Y/N)
+- [ x ] Docs folder up to date?: (Y/N)
+- [ x ] Add if anything missed: (Y/N)
+- [ x ] Add if anything missed: (Y/N)
 
 All Checklist are okay.
 
