@@ -45,10 +45,9 @@ describe('ResetPassowrdComponent', () => {
   });
 
   describe('when testing resetPassword()', () => {
-    beforeEach(() => {
-      component.resetPasswordForm.setValue({password: 'aaa', confirmPassword: 'aaa'});
-    });
+
     it('should emit success callback if api call success', fakeAsync(() => {
+      component.resetPasswordForm.setValue({password: 'aaa', confirmPassword: 'aaa'});
       component.successCallBack = new EventEmitter<any>();
       component.callApi = true;
       spyOn(component.successCallBack, 'emit');
@@ -60,6 +59,7 @@ describe('ResetPassowrdComponent', () => {
     }));
 
     it('should emit reset password call back if call API false', fakeAsync(() => {
+      component.resetPasswordForm.setValue({password: 'aaa', confirmPassword: 'aaa'});
       component.resetClickCallBack = new EventEmitter<any>();
       component.callApi = false;
       spyOn(component.resetClickCallBack, 'emit');
@@ -68,6 +68,7 @@ describe('ResetPassowrdComponent', () => {
     }));
 
     it('should emit error call back if password compromised', fakeAsync(() => {
+      component.resetPasswordForm.setValue({password: 'aaa', confirmPassword: 'aaa'});
       component.callApi = true;
       spyOn(component.errorCallBack, 'emit');
       serviceSpy.resetPassword.and.returnValue(throwError(
@@ -94,6 +95,7 @@ describe('ResetPassowrdComponent', () => {
     }));
 
     it('should emit error call back if API call fail', () => {
+      component.resetPasswordForm.setValue({password: 'aaa', confirmPassword: 'aaa'});
       component.callApi = true;
       spyOn(component.errorCallBack, 'emit');
       serviceSpy.resetPassword.and.returnValue(throwError(''));
