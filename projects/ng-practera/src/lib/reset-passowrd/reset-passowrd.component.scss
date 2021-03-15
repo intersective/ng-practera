@@ -1,0 +1,10 @@
+@import '../../theme/global.scss';
+
+.invalid-field {
+  color: var(--ion-color-danger);
+  border-bottom: 1px solid var(--ion-color-danger);
+}
+
+.list {
+  padding: 0;
+}
