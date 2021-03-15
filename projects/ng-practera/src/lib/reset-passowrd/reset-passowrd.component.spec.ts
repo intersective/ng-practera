@@ -60,11 +60,11 @@ describe('ResetPassowrdComponent', () => {
     }));
 
     it('should emit reset password call back if call API false', fakeAsync(() => {
-      component.resetPasswordCallBack = new EventEmitter<any>();
+      component.resetClickCallBack = new EventEmitter<any>();
       component.callApi = false;
-      spyOn(component.resetPasswordCallBack, 'emit');
+      spyOn(component.resetClickCallBack, 'emit');
       component.resetPassword();
-      expect(component.resetPasswordCallBack.emit).toHaveBeenCalledWith(true);
+      expect(component.resetClickCallBack.emit).toHaveBeenCalledWith(true);
     }));
 
     it('should emit error call back if password compromised', fakeAsync(() => {
