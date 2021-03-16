@@ -7,6 +7,7 @@ import { BrandingLogoComponent } from './branding-logo/branding-logo.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MfaRegisterComponent } from './mfa-register/mfa-register.component';
 import { MfaVerifyComponent } from './mfa-verify/mfa-verify.component';
+import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MfaVerifyComponent } from './mfa-verify/mfa-verify.component';
     BrandingLogoComponent,
     ForgotPasswordComponent,
     MfaRegisterComponent,
-    MfaVerifyComponent],
+    MfaVerifyComponent,
+    ResetPassowrdComponent],
   imports: [
     IonicModule,
     CommonModule,
@@ -25,6 +27,7 @@ import { MfaVerifyComponent } from './mfa-verify/mfa-verify.component';
     BrandingLogoComponent,
     ForgotPasswordComponent,
     MfaRegisterComponent,
-    MfaVerifyComponent]
+    MfaVerifyComponent,
+    ResetPassowrdComponent]
 })
 export class NgPracteraModule {}

@@ -1,8 +1,26 @@
-# @practera/ng-practera
+## @practera/ng-practera
 
 Angular components library made using Ionic components for Practera.
 
 This angular library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
+
+## Health
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=alert_status&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=coverage&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=security_rating&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=sqale_rating&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=bugs&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=code_smells&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera)
+
+## Table of Contents
+- [@practera/ng-practera](#practerang-practera)
+- [Health](#health)
+- [Table of Contents](#table-of-contents)
+- [Install](#install)
+- [Import](#import)
+- [Components](#components)
+  - [Branding logo](#branding-logo)
+  - [Login](#login)
+  - [Forgot Password](#forgot-password)
+  - [MFA Register](#mfa-register)
+  - [MFA Verify](#mfa-verify)
+  - [Reset Password](#reset-password)
 
 ## Install
 ```
@@ -23,6 +41,7 @@ put `NgPracteraModule` under `imports` of the module.
 ```
 
 ## Components
+
 ### Branding logo
 Component will show the priview of the image pass to it. It mainly use for custom branding in authendication pages like login, forgot passowrd, etc to show client logo on the page.
 ```html
@@ -145,4 +164,30 @@ Component is the MFA Verify page UI. it have button to send SMS, text field to t
 (errorCallBack)="errorCallBack($event)"
 (verifyClickCallBack)="verifyClickCallBack($event)" 
 (sendSMSClickCallBack)="sendSMSClickCallBack($event)"></prac-mfa-verify>
+```
+### Reset Password
+Component is the Reset password page UI. it have form with two text field and button, login page link and 'Powered by practera' section.
+```html
+<prac-reset-passowrd></prac-reset-passowrd>
+```
+**properties**
+| Property name | Description      |
+| :------------ | :--------------- |
+| callApi | Boolean to enable and disable API calling of the component default value is `true` |
+| successCallBack | Menthod to call after password rest api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
+| errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
+| resetClickCallBack | Menthod to call after click on 'change password' button. Optional property, if `callApi` is `false` this need to pass to get change password button click.  |
+| loginClickCallBack | Menthod to call after click on login link. This need to pass to get login link click. `Not Optional` |
+
+```html
+<prac-reset-passowrd 
+(successCallBack)="successCallBack($event)"
+(errorCallBack)="errorCallBack($event)"
+(loginClickCallBack)="loginClickCallBack($event)" ></prac-reset-passowrd>
+
+<prac-reset-passowrd 
+[callApi]="false" 
+(errorCallBack)="errorCallBack($event)"
+(loginClickCallBack)="loginClickCallBack($event)" 
+(resetClickCallBack)="resetClickCallBack($event)"></prac-reset-passowrd>
 ```
