@@ -29,6 +29,7 @@ interface ConfigParams {
   domain?: string;
   id?: number | string;
   apikey?: string;
+  appkey?: string;
 }
 
 interface UserProfile {
@@ -166,10 +167,6 @@ export class NgPracteraService {
     return of({});
   }
 
-  getConfig(apiURL: string, appkey: string, domainURL: string): Observable<{data: ExperienceConfig[]}> {
-    return of({data: []});
-  }
-
   /**
    * mfaRegister
    * @description make request to server to register mobile number
@@ -277,6 +274,35 @@ export class NgPracteraService {
       // });
       return of(stackList);
     }
+  }
+
+  verifyRegistration(data: VerifyParams): Observable<any> {
+    return of({});
+  }
+
+  /**
+   * Use to get comfigaration for a custom domain
+   * @param data config param object
+   */
+  getConfig(data: ConfigParams): Observable<{data: ExperienceConfig[]}> {
+    return of({data: []});
+  }
+
+  /**
+   * checkDomain
+   * @description enforced domain checking before experience config API call
+   * @param [type] data
+   */
+  checkDomain(data: any): Observable<any> {
+    if (!data.domain) {
+      throw new Error('Tech Error: Domain is compulsory!');
+    }
+
+    return this.getConfig(data);
+  }
+
+  saveRegistration(data: RegisterData): Observable<any> {
+    return of({});
   }
 
 }

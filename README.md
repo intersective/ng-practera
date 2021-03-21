@@ -21,6 +21,7 @@ This angular library was generated with [Angular CLI](https://github.com/angular
   - [MFA Register](#mfa-register)
   - [MFA Verify](#mfa-verify)
   - [Reset Password](#reset-password)
+  - [Registration](#registration)
 
 ## Install
 ```
@@ -65,10 +66,10 @@ Component is the login UI. it have login form (text fields, buttons), forgot pas
 | Property name | Description      |
 | :------------ | :--------------- |
 | callApi | Boolean to enable and disable API calling of the component default value is `true` |
-| successCallBack | Menthod to call after login api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
+| successCallBack | Menthod to call after login api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
 | errorCallBack | Menthod to call after login api return error response or any other error. `Not Optional` |
 | forgotPasswordCallBack | Menthod to call after click on forgot password link. `Not Optional`  |
-| loginClickCallBack | Menthod to call after click on login button. Optional property, if `callApi` is `false` this need to pass to get login button click. |
+| loginClickCallBack | Menthod to call after click on login button. `Optional property`, if `callApi` is `false` this need to pass to get login button click. |
 
 ```html
 <prac-login 
@@ -92,9 +93,9 @@ Component is the forgot passowrd UI. it have text field to enter email, send ema
 | Property name | Description      |
 | :------------ | :--------------- |
 | callApi | Boolean to enable and disable API calling of the component default value is `true` |
-| successCallBack | Menthod to call after forgot password api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
+| successCallBack | Menthod to call after forgot password api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
 | errorCallBack | Menthod to call after forgot password api return error response or any other error. `Not Optional` |
-| sendEmailClickCallBack | Menthod to call after click on send email button. Optional property, if `callApi` is `false` this need to pass to get send email button click.  |
+| sendEmailClickCallBack | Menthod to call after click on send email button. `Optional property`, if `callApi` is `false` this need to pass to get send email button click.  |
 | loginClickCallBack | Menthod to call after click on login link. `Not Optional` |
 
 ```html
@@ -120,9 +121,9 @@ Component is the MFA Register page UI. it have dropdown to select contury, text 
 | Property name | Description      |
 | :------------ | :--------------- |
 | callApi | Boolean to enable and disable API calling of the component default value is `true` |
-| successCallBack | Menthod to call after mfa register api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
+| successCallBack | Menthod to call after mfa register api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
 | errorCallBack | Menthod to call after mfa register api return error response or any other error. `Not Optional` |
-| registerClickCallBack | Menthod to call after click on register button. Optional property, if `callApi` is `false` this need to pass to get send email button click.  |
+| registerClickCallBack | Menthod to call after click on register button. `Optional property`, if `callApi` is `false` this need to pass to get send email button click.  |
 | loginClickCallBack | Menthod to call after click on login link. `Not Optional` |
 
 ```html
@@ -147,11 +148,11 @@ Component is the MFA Verify page UI. it have button to send SMS, text field to t
 | Property name | Description      |
 | :------------ | :--------------- |
 | callApi | Boolean to enable and disable API calling of the component default value is `true` |
-| verifySuccessCallBack | Menthod to call after mfa verify api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
-| sendSMSSuccessCallBack | Menthod to call after send sms api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
+| verifySuccessCallBack | Menthod to call after mfa verify api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
+| sendSMSSuccessCallBack | Menthod to call after send sms api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
 | errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
-| verifyClickCallBack | Menthod to call after click on 'verify code' button. Optional property, if `callApi` is `false` this need to pass to get verify code button click.  |
-| sendSMSClickCallBack | Menthod to call after click on send SMS button. Optional property, if `callApi` is `false` this need to pass to get send SMS button click.  |
+| verifyClickCallBack | Menthod to call after click on 'verify code' button. `Optional property`, if `callApi` is `false` this need to pass to get verify code button click.  |
+| sendSMSClickCallBack | Menthod to call after click on send SMS button. `Optional property`, if `callApi` is `false` this need to pass to get send SMS button click.  |
 
 ```html
 <prac-mfa-verify 
@@ -174,9 +175,9 @@ Component is the Reset password page UI. it have form with two text field and bu
 | Property name | Description      |
 | :------------ | :--------------- |
 | callApi | Boolean to enable and disable API calling of the component default value is `true` |
-| successCallBack | Menthod to call after password rest api return success response. Optional property, if `callApi` is `true` this need to pass to get api return response. | 
+| successCallBack | Menthod to call after password rest api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
 | errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
-| resetClickCallBack | Menthod to call after click on 'change password' button. Optional property, if `callApi` is `false` this need to pass to get change password button click.  |
+| resetClickCallBack | Menthod to call after click on 'change password' button. `Optional property`, if `callApi` is `false` this need to pass to get change password button click.  |
 | loginClickCallBack | Menthod to call after click on login link. This need to pass to get login link click. `Not Optional` |
 
 ```html
@@ -190,4 +191,71 @@ Component is the Reset password page UI. it have form with two text field and bu
 (errorCallBack)="errorCallBack($event)"
 (loginClickCallBack)="loginClickCallBack($event)" 
 (resetClickCallBack)="resetClickCallBack($event)"></prac-reset-passowrd>
+```
+
+### Registration
+Component is the Registration page UI. It contains, unregister user direct link UI, register from contact number UI and normal registration UI with relevent field. Showing UI depend on data pass to the component and config of the app.
+```html
+<prac-register></prac-register>
+```
+**properties**
+| Property name | Description      |
+| :------------ | :--------------- |
+| unRegisteredDirectLink | For indicate unregisterd users using direct link to navigate to register page. default value is `false`. `Optional property`, pass it only if registration link have it.|
+| domain | To get configuration of the app related to domain URL. default value is `''`, empty string. Pass domain URL as `string` value.`Optional property`, if `callApi` is `true` this need to pass to get config of the app. |
+| userPrams | User `email` and the `key` came in the registration link. default value is both `null`. `Not Optional`, need to pass this to render UI properly and also to verify link if `callApi` is `true`. |
+| callApi | Boolean to enable and disable API calling of the component default value is `true` |
+| verifySuccessCallBack | Menthod to call after verifying register link and get configuration for the app. Will return both API call response together `Optional property`, if `callApi` is `true` this need to pass to get APIs return responses. | 
+| registerSuccessCallBack | Menthod to call after registration and login APIs return success responses. Both response will return together because after registration done login also happening. `Optional property`, if `callApi` is `true` this need to pass to get APIs return responses. | 
+| errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
+| registerClickCallBack | Menthod to call after click on 'register' button. `Optional property`, if `callApi` is `false` this need to pass to get 'register' button click.  |
+
+**RelatedData Formats**
+- domain - sample URL value
+  ```json
+  "dev.abcd.com"
+  ```
+- userPrams
+  ```json
+  {
+    "email": "",
+    "key": ""
+  }
+  ```
+- verifySuccessCallBack - returning both link verification and config responses.
+  ```json
+  {
+    "userData": {},
+    "configData": {}
+  }
+  ```
+- registerSuccessCallBack - returning both register and login responses.
+  ```json
+  {
+    "registrationResponse": {},
+    "loginResponse": {}
+  }
+  ```
+
+```html
+<prac-register
+[domain]="app domain"
+[userPrams]="register link pram"
+(verifySuccessCallBack)="verifySuccessCallBack($event)"
+(registerSuccessCallBack)="registerSuccessCallBack($event)"
+(errorCallBack)="errorCallBack($event)" ></prac-register>
+
+<prac-register
+[unRegisteredDirectLink]="true" 
+[domain]="app domain"
+[userPrams]="register link pram"
+(verifySuccessCallBack)="verifySuccessCallBack($event)"
+(registerSuccessCallBack)="registerSuccessCallBack($event)"
+(errorCallBack)="errorCallBack($event)" ></prac-register>
+
+<prac-register 
+[userPrams]="register link pram"
+[callApi]="false" 
+(errorCallBack)="errorCallBack($event)"
+(registerClickCallBack)="registerClickCallBack($event)"></prac-register>
 ```
