@@ -17,12 +17,17 @@
     "ng-practera"
   ],
   "peerDependencies": {
-    "@angular/common": "^11.1.0",
-    "@angular/core": "^11.1.0",
+    "@angular/animations": "~11.1.0",
+    "@angular/common": "~11.1.0",
+    "@angular/compiler": "~11.1.0",
+    "@angular/core": "~11.1.0",
+    "@angular/forms": "~11.1.0",
+    "@angular/http": "^7.2.16",
+    "@angular/platform-browser": "~11.1.0",
+    "@angular/platform-browser-dynamic": "~11.1.0",
     "@ionic/angular": "^5.5.2",
     "lodash": "^4.17.20",
     "@types/lodash": "^4.14.168",
-    "@angular/http": "^7.2.16",
     "ts-md5": "^1.2.7"
   },
   "dependencies": {

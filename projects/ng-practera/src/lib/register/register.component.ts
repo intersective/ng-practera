@@ -1,11 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Md5 } from 'ts-md5/dist/md5';
 import {
   Validators,
   FormControl,
   FormGroup,
-  FormBuilder
 } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 
@@ -57,10 +55,9 @@ export class RegisterComponent implements OnInit {
   @Output() registerClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
-    private route: ActivatedRoute,
-    private practeraService: NgPracteraService,
-    private utils: UtilsService,
-    private modalController: ModalController,
+    private readonly practeraService: NgPracteraService,
+    private readonly utils: UtilsService,
+    private readonly modalController: ModalController,
   ) { }
 
   ngOnInit(): void {
@@ -137,8 +134,7 @@ export class RegisterComponent implements OnInit {
 
   private _autoGeneratePassword(): string {
     const text = Md5.hashStr('').toString();
-    const autoPass = text.substr(0, 8);
-    return autoPass;
+    return text.substr(0, 8);
   }
 
   openLink(): void {
@@ -245,7 +241,7 @@ export class RegisterComponent implements OnInit {
                 default:
                   this.errors.push(this.registerationForm.controls.errors[key]);
               }
-              return;
+              return null;
             }
           }
         }
@@ -278,7 +274,6 @@ export class RegisterComponent implements OnInit {
   }
 
   private _handleError(type: string, error?: any): void {
-    // const statusCode = error ? error.status : null;
     const errorObject = {
       type,
       message: 'Internal error, please try again.',
