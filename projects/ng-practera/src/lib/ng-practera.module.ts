@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MfaRegisterComponent } from './mfa-register/mfa-register.component';
 import { MfaVerifyComponent } from './mfa-verify/mfa-verify.component';
 import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.component';
+import { DirectLinkComponent } from './direct-link/direct-link.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.componen
     ForgotPasswordComponent,
     MfaRegisterComponent,
     MfaVerifyComponent,
-    ResetPassowrdComponent],
+    ResetPassowrdComponent,
+    DirectLinkComponent],
   imports: [
     IonicModule,
     CommonModule,
@@ -28,6 +30,7 @@ import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.componen
     ForgotPasswordComponent,
     MfaRegisterComponent,
     MfaVerifyComponent,
-    ResetPassowrdComponent]
+    ResetPassowrdComponent,
+    DirectLinkComponent]
 })
 export class NgPracteraModule {}
