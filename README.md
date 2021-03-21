@@ -16,6 +16,7 @@ This angular library was generated with [Angular CLI](https://github.com/angular
 - [Import](#import)
 - [Components](#components)
   - [Branding logo](#branding-logo)
+  - [Direct link](#direct-link)
   - [Login](#login)
   - [Forgot Password](#forgot-password)
   - [MFA Register](#mfa-register)
@@ -52,10 +53,28 @@ Component will show the priview of the image pass to it. It mainly use for custo
 | :------------ | :----------- |
 | bradingLogo | logo for custom branding. `Not Optional` |
 ```html
+<prac-branding-logo></prac-branding-logo>
+
 <prac-branding-logo [bradingLogo]="customeLogo"></prac-branding-logo>
 
 <prac-branding-logo [bradingLogo]="'/assets/logo.svg'"></prac-branding-logo>
 ```
+
+### Direct link
+Component will show the waiting message with spinner for the direct links.
+```html
+<prac-direct-link></prac-direct-link>
+```
+**properties**
+| Property name | Description |
+| :------------ | :----------- |
+| waitingMessage | Waiting message to show on the page. `Not Optional` |
+```html
+<prac-direct-link></prac-direct-link>
+
+<prac-direct-link [waitingMessage]="your waiting message"></prac-direct-link>
+```
+
 ### Login
 Component is the login UI. it have login form (text fields, buttons), forgot passowrd link and 'Powered by practera' section.
 ```html
