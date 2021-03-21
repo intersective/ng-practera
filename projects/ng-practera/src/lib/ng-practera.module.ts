@@ -10,6 +10,7 @@ import { MfaVerifyComponent } from './mfa-verify/mfa-verify.component';
 import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.component';
 import { RegisterComponent } from './register/register.component';
 import { TermsConditionsPreviewComponent } from './terms-conditions-preview/terms-conditions-preview.component';
+import { DirectLinkComponent } from './direct-link/direct-link.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TermsConditionsPreviewComponent } from './terms-conditions-preview/term
     MfaVerifyComponent,
     ResetPassowrdComponent,
     RegisterComponent,
-    TermsConditionsPreviewComponent],
+    TermsConditionsPreviewComponent,
+    DirectLinkComponent],
   imports: [
     IonicModule,
     CommonModule,
@@ -37,6 +39,7 @@ import { TermsConditionsPreviewComponent } from './terms-conditions-preview/term
     MfaVerifyComponent,
     ResetPassowrdComponent,
     RegisterComponent,
-    TermsConditionsPreviewComponent]
+    TermsConditionsPreviewComponent,
+    DirectLinkComponent]
 })
 export class NgPracteraModule {}

@@ -16,12 +16,13 @@ This angular library was generated with [Angular CLI](https://github.com/angular
 - [Import](#import)
 - [Components](#components)
   - [Branding logo](#branding-logo)
+  - [Direct link](#direct-link)
   - [Login](#login)
   - [Forgot Password](#forgot-password)
-  - [MFA Register](#mfa-register)
-  - [MFA Verify](#mfa-verify)
   - [Reset Password](#reset-password)
   - [Registration](#registration)
+  - [MFA Register](#mfa-register)
+  - [MFA Verify](#mfa-verify)
 
 ## Install
 ```
@@ -53,10 +54,28 @@ Component will show the priview of the image pass to it. It mainly use for custo
 | :------------ | :----------- |
 | bradingLogo | logo for custom branding. `Not Optional` |
 ```html
+<prac-branding-logo></prac-branding-logo>
+
 <prac-branding-logo [bradingLogo]="customeLogo"></prac-branding-logo>
 
 <prac-branding-logo [bradingLogo]="'/assets/logo.svg'"></prac-branding-logo>
 ```
+
+### Direct link
+Component will show the waiting message with spinner for the direct links.
+```html
+<prac-direct-link></prac-direct-link>
+```
+**properties**
+| Property name | Description |
+| :------------ | :----------- |
+| waitingMessage | Waiting message to show on the page. `Not Optional` |
+```html
+<prac-direct-link></prac-direct-link>
+
+<prac-direct-link [waitingMessage]="your waiting message"></prac-direct-link>
+```
+
 ### Login
 Component is the login UI. it have login form (text fields, buttons), forgot passowrd link and 'Powered by practera' section.
 ```html
@@ -112,60 +131,6 @@ Component is the forgot passowrd UI. it have text field to enter email, send ema
 (loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
 ```
 
-### MFA Register
-Component is the MFA Register page UI. it have dropdown to select contury, text field to type mobile number, register button, link to go back to login and 'Powered by practera' section.
-```html
-<prac-mfa-register></prac-mfa-register>
-```
-**properties**
-| Property name | Description      |
-| :------------ | :--------------- |
-| callApi | Boolean to enable and disable API calling of the component default value is `true` |
-| successCallBack | Menthod to call after mfa register api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
-| errorCallBack | Menthod to call after mfa register api return error response or any other error. `Not Optional` |
-| registerClickCallBack | Menthod to call after click on register button. `Optional property`, if `callApi` is `false` this need to pass to get send email button click.  |
-| loginClickCallBack | Menthod to call after click on login link. `Not Optional` |
-
-```html
-<prac-mfa-register 
-(successCallBack)="successCallBack($event)" 
-(errorCallBack)="errorCallBack($event)" 
-(loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
-
-<prac-mfa-register 
-[callApi]="false" 
-(errorCallBack)="errorCallBack($event)"
-(registerClickCallBack)="registerClickCallBack($event)" 
-(loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
-```
-
-### MFA Verify
-Component is the MFA Verify page UI. it have button to send SMS, text field to type verify code, 'Verify code' button and 'Powered by practera' section.
-```html
-<prac-mfa-verify></prac-mfa-verify>
-```
-**properties**
-| Property name | Description      |
-| :------------ | :--------------- |
-| callApi | Boolean to enable and disable API calling of the component default value is `true` |
-| verifySuccessCallBack | Menthod to call after mfa verify api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
-| sendSMSSuccessCallBack | Menthod to call after send sms api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
-| errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
-| verifyClickCallBack | Menthod to call after click on 'verify code' button. `Optional property`, if `callApi` is `false` this need to pass to get verify code button click.  |
-| sendSMSClickCallBack | Menthod to call after click on send SMS button. `Optional property`, if `callApi` is `false` this need to pass to get send SMS button click.  |
-
-```html
-<prac-mfa-verify 
-(verifySuccessCallBack)="verifySuccessCallBack($event)"
-(sendSMSSuccessCallBack)="sendSMSSuccessCallBack($event)" 
-(errorCallBack)="errorCallBack($event)" ></prac-mfa-verify>
-
-<prac-mfa-verify 
-[callApi]="false" 
-(errorCallBack)="errorCallBack($event)"
-(verifyClickCallBack)="verifyClickCallBack($event)" 
-(sendSMSClickCallBack)="sendSMSClickCallBack($event)"></prac-mfa-verify>
-```
 ### Reset Password
 Component is the Reset password page UI. it have form with two text field and button, login page link and 'Powered by practera' section.
 ```html
@@ -258,4 +223,59 @@ Component is the Registration page UI. It contains, unregister user direct link 
 [callApi]="false" 
 (errorCallBack)="errorCallBack($event)"
 (registerClickCallBack)="registerClickCallBack($event)"></prac-register>
+```
+
+### MFA Register
+Component is the MFA Register page UI. it have dropdown to select contury, text field to type mobile number, register button, link to go back to login and 'Powered by practera' section.
+```html
+<prac-mfa-register></prac-mfa-register>
+```
+**properties**
+| Property name | Description      |
+| :------------ | :--------------- |
+| callApi | Boolean to enable and disable API calling of the component default value is `true` |
+| successCallBack | Menthod to call after mfa register api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
+| errorCallBack | Menthod to call after mfa register api return error response or any other error. `Not Optional` |
+| registerClickCallBack | Menthod to call after click on register button. `Optional property`, if `callApi` is `false` this need to pass to get send email button click.  |
+| loginClickCallBack | Menthod to call after click on login link. `Not Optional` |
+
+```html
+<prac-mfa-register 
+(successCallBack)="successCallBack($event)" 
+(errorCallBack)="errorCallBack($event)" 
+(loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
+
+<prac-mfa-register 
+[callApi]="false" 
+(errorCallBack)="errorCallBack($event)"
+(registerClickCallBack)="registerClickCallBack($event)" 
+(loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
+```
+
+### MFA Verify
+Component is the MFA Verify page UI. it have button to send SMS, text field to type verify code, 'Verify code' button and 'Powered by practera' section.
+```html
+<prac-mfa-verify></prac-mfa-verify>
+```
+**properties**
+| Property name | Description      |
+| :------------ | :--------------- |
+| callApi | Boolean to enable and disable API calling of the component default value is `true` |
+| verifySuccessCallBack | Menthod to call after mfa verify api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
+| sendSMSSuccessCallBack | Menthod to call after send sms api return success response. `Optional property`, if `callApi` is `true` this need to pass to get api return response. | 
+| errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
+| verifyClickCallBack | Menthod to call after click on 'verify code' button. `Optional property`, if `callApi` is `false` this need to pass to get verify code button click.  |
+| sendSMSClickCallBack | Menthod to call after click on send SMS button. `Optional property`, if `callApi` is `false` this need to pass to get send SMS button click.  |
+
+```html
+<prac-mfa-verify 
+(verifySuccessCallBack)="verifySuccessCallBack($event)"
+(sendSMSSuccessCallBack)="sendSMSSuccessCallBack($event)" 
+(errorCallBack)="errorCallBack($event)" ></prac-mfa-verify>
+
+<prac-mfa-verify 
+[callApi]="false" 
+(errorCallBack)="errorCallBack($event)"
+(verifyClickCallBack)="verifyClickCallBack($event)" 
+(sendSMSClickCallBack)="sendSMSClickCallBack($event)"></prac-mfa-verify>
 ```
