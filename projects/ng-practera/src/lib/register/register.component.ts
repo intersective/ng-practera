@@ -21,14 +21,7 @@ export class RegisterComponent implements OnInit {
   password = '';
   confirmPassword = '';
   isAgreed = false;
-  registerationForm = new FormGroup({
-    email: new FormControl('', [Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8)
-    ]),
-    confirmPassword: new FormControl('', [Validators.required])
-  });
+  registerationForm: FormGroup;
   hidePassword = false;
   user: any = {
     email: null,
@@ -58,7 +51,16 @@ export class RegisterComponent implements OnInit {
     private readonly practeraService: NgPracteraService,
     private readonly utils: UtilsService,
     private readonly modalController: ModalController,
-  ) { }
+  ) {
+    this.registerationForm = new FormGroup({
+      email: new FormControl('', [Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8)
+      ]),
+      confirmPassword: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit(): void {
     // call link virify API calls if callApi is true.
@@ -190,64 +192,72 @@ export class RegisterComponent implements OnInit {
   }
 
   validateRegistration(): any {
-    let isValid = true;
     this.errors = [];
+    const notAgreedError = 'You need to agree with terms and Conditions.';
     if (this.unRegisteredDirectLink) {
       if (!this.isAgreed) {
-        this.errors.push('You need to agree with terms and Conditions.');
-        isValid = false;
-        return isValid;
+        this.errors.push(notAgreedError);
+        return false;
       } else {
-        return isValid;
+        return true;
       }
     }
     if (this.hidePassword) {
       if (!this.isAgreed) {
-        this.errors.push('You need to agree with terms and Conditions.');
-        isValid = false;
-        return isValid;
+        this.errors.push(notAgreedError);
+        return false;
       } else {
-        return isValid;
+        return true;
       }
     } else if (this.registerationForm.valid) {
-      const pass = this.registerationForm.controls.password.value;
-      const confirmPass = this.registerationForm.controls.confirmPassword.value;
-      if (pass !== confirmPass) {
-        this.errors.push('Your passwords don\'t match.');
-        isValid = false;
-        return isValid;
-      } else if (!this.isAgreed) {
-        this.errors.push('You need to agree with terms and Conditions.');
-        isValid = false;
-        return isValid;
-      } else {
-        return isValid;
-      }
+      return this._validateValidRegisterForm();
     } else {
-      for (const conrtoller in this.registerationForm.controls) {
-        if (this.registerationForm.controls[conrtoller].errors) {
-          isValid = false;
-          for (const key in this.registerationForm.controls[conrtoller].errors) {
-            if (this.registerationForm.controls[conrtoller].errors.hasOwnProperty(key)) {
-              switch (key) {
-                case 'required':
-                  this.errors.push('Please fill in your password');
-                  break;
-                case 'minlength':
-                  this.errors.push(
-                    'Your password needs to be more than 8 characters.'
-                  );
-                  break;
-                default:
-                  this.errors.push(this.registerationForm.controls.errors[key]);
-              }
-              return null;
+      return this._validateInvalidRegisterForm();
+    }
+  }
+
+  private _validateValidRegisterForm(): any {
+    const notAgreedError = 'You need to agree with terms and Conditions.';
+    const pass = this.registerationForm.controls.password.value;
+    const confirmPass = this.registerationForm.controls.confirmPassword.value;
+    if (pass !== confirmPass) {
+      this.errors.push('Your passwords don\'t match.');
+      return false;
+    } else if (!this.isAgreed) {
+      this.errors.push(notAgreedError);
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  private _validateInvalidRegisterForm(): any {
+    let isValid = true;
+    for (const controller in this.registerationForm.controls) {
+      if (this.registerationForm.controls[controller].errors) {
+        const errors: any = this.registerationForm.controls[controller].errors;
+        isValid = false;
+        for (const key in errors) {
+          if (errors.hasOwnProperty(key)
+          ) {
+            switch (key) {
+              case 'required':
+                this.errors.push('Please fill in your password');
+                break;
+              case 'minlength':
+                this.errors.push(
+                  'Your password needs to be more than 8 characters.'
+                );
+                break;
+              default:
+                this.errors.push(errors[key]);
             }
+            return;
           }
         }
       }
-      return isValid;
     }
+    return isValid;
   }
 
   private _setupPassword(): void {

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { Router } from '@angular/router';
 import { BrowserStorageService } from './services/storage/storage.service';
-import { UtilsService } from './services/utils/utils.service';
 
 export interface StackObject {
   uuid: string;
@@ -61,9 +58,7 @@ interface ExperienceConfig {
 export class NgPracteraService {
 
   constructor(
-    private readonly storage: BrowserStorageService,
-    private readonly utils: UtilsService,
-    private readonly router: Router
+    private readonly storage: BrowserStorageService
   ) { }
 
   /**
@@ -86,44 +81,6 @@ export class NgPracteraService {
    */
   directLogin(apikey: string): Observable<any> {
     return of({});
-  }
-
-  private _handleLoginResponse(response: any): any {
-    if (!response.apikey) {
-      // this.request.apiResponseFormatError('login api missing apikey');
-      return null;
-    }
-    // Checking API return MFA messages and redirect user to MFA verify or register.
-    if (this.utils.has(response, 'mfaRegistered')) {
-      this.utils.setApiKey(response.apikey);
-      this.storage.set('isLoggedIn', true);
-      if (response.mfaRegistered) {
-        this.router.navigate(['mfa-verify']);
-        return null;
-      } else {
-        this.router.navigate(['mfa-register']);
-        return null;
-      }
-    }
-    // If API didn't return MFA messages get stacks and return and store apikey in stroage.
-    return this._normaliseLoginResponse(response);
-  }
-
-  private _normaliseLoginResponse(response: any): any {
-    let stackList = [];
-    if (response.stack) {
-      stackList.push(response.stack);
-    }
-    if (response.stacks) {
-      stackList = response.stacks;
-    }
-    this.storage.setUser({apikey: response.apikey});
-    this.storage.set('isLoggedIn', true);
-    this.storage.set('stacks', stackList);
-    return {
-      apikey: response.apikey,
-      stacks: stackList
-    };
   }
 
   isAuthenticated(): boolean {

@@ -1,6 +1,6 @@
 @import '../../theme/global.scss';
 
-ion-toolbar {
+.toolbar {
   border: none !important;
   --border-width: 0px !important;
 }
@@ -16,7 +16,7 @@ ion-toolbar {
   height: 85%;
 }
 
-ion-toolbar, ion-content {
+.toolbar, .content {
   --overflow: hidden;
   .scroll-y {
     overflow-y: hidden;
