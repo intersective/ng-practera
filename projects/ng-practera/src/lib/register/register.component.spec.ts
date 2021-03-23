@@ -193,6 +193,23 @@ describe('RegisterComponent', () => {
       });
     });
 
+    it(`should emit register success call back if 'unRegisteredDirectLink' is true and API return success response`, () => {
+      component.registerSuccessCallBack = new EventEmitter<any>();
+      spyOn(component.registerSuccessCallBack, 'emit');
+      component.registerationForm.setValue({email: 'acb@asd.com', password: '', confirmPassword: ''});
+      component.user.id = 1234;
+      component.user.key = 'qwerty';
+      component.confirmPassword = 'abcdefghijk';
+      component.user.email = 'acb@asd.com';
+      component.isAgreed = true;
+      component.unRegisteredDirectLink = true;
+      serviceSpy.saveRegistration.and.returnValue(of({}));
+      serviceSpy.login.and.returnValue(of({}));
+      component.register();
+      expect(component.confirmPassword).not.toEqual('');
+      expect(component.user.password).not.toEqual('');
+    });
+
     it(`should have errors if passowrds didn't matched`, () => {
       component.registerationForm.setValue({email: 'acb@asd.com', password: 'abcdefghijk', confirmPassword: 'abcdewsdfghijk'});
       component.user.id = 1234;

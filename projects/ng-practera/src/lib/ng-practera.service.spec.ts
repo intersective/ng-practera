@@ -142,4 +142,18 @@ describe('NgPracteraService', () => {
       }
     );
   });
+  xit('when testing verifyRegistration() it should return registration link valid or not', () => {
+    service.verifyRegistration({
+      email: 'test@test.com',
+      key: '12345'
+    }).subscribe();
+  });
+
+  xit('when testing saveRegistration() it should register the new user', () => {
+    service.saveRegistration({
+      password: '1234',
+      user_id: 123455,
+      key: '12345'
+    }).subscribe();
+  });
 });
