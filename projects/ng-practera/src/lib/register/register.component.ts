@@ -252,7 +252,7 @@ export class RegisterComponent implements OnInit {
               default:
                 this.errors.push(errors[key]);
             }
-            return;
+            return false;
           }
         }
       }

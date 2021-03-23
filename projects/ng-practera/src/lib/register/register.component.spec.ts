@@ -280,4 +280,55 @@ describe('RegisterComponent', () => {
     });
   });
 
+  describe('when testing removeErrorMessages()', () => {
+    it(`should empty the errors`, () => {
+      component.removeErrorMessages();
+      expect(component.errors).toEqual([]);
+    });
+  });
+
+  describe('when testing validateRegistration()', () => {
+    it(`should return true if unRegistered user agreed to the terms`, () => {
+      component.isAgreed = true;
+      component.unRegisteredDirectLink = true;
+      const result = component.validateRegistration();
+      expect(result).toEqual(true);
+    });
+
+    it(`should return false and have errors if unRegistered user not agreed to the terms`, () => {
+      component.isAgreed = false;
+      component.unRegisteredDirectLink = true;
+      const result = component.validateRegistration();
+      expect(result).toEqual(false);
+      expect(component.errors[0]).toEqual('You need to agree with terms and Conditions.');
+    });
+
+    it(`should return false and have errors if 'hidePassword' true not agreed to the terms`, () => {
+      component.isAgreed = false;
+      component.hidePassword = true;
+      const result = component.validateRegistration();
+      expect(result).toEqual(false);
+      expect(component.errors[0]).toEqual('You need to agree with terms and Conditions.');
+    });
+
+    it(`should return true if 'hidePassword' true agreed to the terms`, () => {
+      component.isAgreed = true;
+      component.hidePassword = true;
+      const result = component.validateRegistration();
+      expect(result).toEqual(true);
+    });
+
+    it(`should true if form valid `, () => {
+      component.registerationForm.setValue({email: 'acb@asd.com', password: 'abcdefghijk', confirmPassword: 'abcdefghijk'});
+      component.user.id = 1234;
+      component.user.key = 'qwerty';
+      component.confirmPassword = 'abcdefghijk';
+      component.user.email = 'acb@asd.com';
+      component.isAgreed = true;
+      const result = component.validateRegistration();
+      expect(result).toEqual(true);
+    });
+
+  });
+
 });

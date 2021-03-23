@@ -10,6 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class TermsConditionsPreviewComponent implements OnInit {
 
   termsURL: any;
+  stringURL = '';
 
   constructor(
     public modalController: ModalController,
@@ -17,7 +18,8 @@ export class TermsConditionsPreviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.termsURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://images.practera.com/terms_and_conditions/practera_default_terms_conditions_july2018.pdf#toolbar=0&navpanes=0&scrollbar=0"');
+    this.stringURL = 'https://images.practera.com/terms_and_conditions/practera_default_terms_conditions_july2018.pdf#toolbar=0&navpanes=0&scrollbar=0"';
+    this.termsURL = this.sanitizer.bypassSecurityTrustResourceUrl(this.stringURL);
   }
 
   close(Agreed = false): void {
