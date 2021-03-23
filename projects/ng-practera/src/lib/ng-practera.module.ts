@@ -8,6 +8,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MfaRegisterComponent } from './mfa-register/mfa-register.component';
 import { MfaVerifyComponent } from './mfa-verify/mfa-verify.component';
 import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.component';
+import { RegisterComponent } from './register/register.component';
+import { TermsConditionsPreviewComponent } from './terms-conditions-preview/terms-conditions-preview.component';
 import { DirectLinkComponent } from './direct-link/direct-link.component';
 
 @NgModule({
@@ -18,6 +20,8 @@ import { DirectLinkComponent } from './direct-link/direct-link.component';
     MfaRegisterComponent,
     MfaVerifyComponent,
     ResetPassowrdComponent,
+    RegisterComponent,
+    TermsConditionsPreviewComponent,
     DirectLinkComponent],
   imports: [
     IonicModule,
@@ -25,12 +29,17 @@ import { DirectLinkComponent } from './direct-link/direct-link.component';
     FormsModule,
     ReactiveFormsModule,
   ],
+  entryComponents: [
+    TermsConditionsPreviewComponent
+  ],
   exports: [LoginComponent,
     BrandingLogoComponent,
     ForgotPasswordComponent,
     MfaRegisterComponent,
     MfaVerifyComponent,
     ResetPassowrdComponent,
+    RegisterComponent,
+    TermsConditionsPreviewComponent,
     DirectLinkComponent]
 })
 export class NgPracteraModule {}
