@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +11,9 @@ import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.componen
 import { RegisterComponent } from './register/register.component';
 import { TermsConditionsPreviewComponent } from './terms-conditions-preview/terms-conditions-preview.component';
 import { DirectLinkComponent } from './direct-link/direct-link.component';
+import { NgPracteraService, LibConfig } from './ng-practera.service';
+
+export const LibConfigService = new InjectionToken<LibConfig>('LibConfig');
 
 @NgModule({
   declarations: [
@@ -42,4 +45,17 @@ import { DirectLinkComponent } from './direct-link/direct-link.component';
     TermsConditionsPreviewComponent,
     DirectLinkComponent]
 })
-export class NgPracteraModule {}
+export class NgPracteraModule {
+  static forRoot(config: LibConfig): ModuleWithProviders<any> {
+    return {
+      ngModule: NgPracteraModule,
+      providers: [
+        NgPracteraService,
+        {
+          provide: LibConfigService,
+          useValue: config
+        }
+      ]
+    };
+  }
+}

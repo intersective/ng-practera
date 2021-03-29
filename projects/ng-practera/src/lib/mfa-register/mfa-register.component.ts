@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UtilsService } from '../services/utils/utils.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgPracteraService } from '../ng-practera.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { NgPracteraService } from '../ng-practera.service';
 })
 export class MfaRegisterComponent implements OnInit {
 
-  @Input() callApi ? = true;
+  callApi = this.practeraService.getLibraryConfig().callApi;
 
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
@@ -98,7 +97,6 @@ export class MfaRegisterComponent implements OnInit {
 
   constructor(
     private readonly practeraService: NgPracteraService,
-    private readonly utils: UtilsService,
   ) { }
 
   ngOnInit(): void {

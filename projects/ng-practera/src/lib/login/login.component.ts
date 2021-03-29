@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 import { UtilsService } from '../services/utils/utils.service';
@@ -11,7 +11,7 @@ import { NgPracteraService } from '../ng-practera.service';
 })
 export class LoginComponent {
 
-  @Input() callApi ? = true;
+  callApi = this.practeraService.getLibraryConfig().callApi;
 
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
