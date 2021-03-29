@@ -26,7 +26,7 @@ describe('ResetPassowrdComponent', () => {
         UrlSerializer,
         {
           provide: NgPracteraService,
-          useValue: jasmine.createSpyObj('NgPracteraService', ['verifyResetPassword', 'resetPassword'])
+          useValue: jasmine.createSpyObj('NgPracteraService', ['verifyResetPassword', 'resetPassword', 'getLibraryConfig'])
         }
       ],
     })

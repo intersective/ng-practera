@@ -11,7 +11,7 @@ import { NgPracteraService } from '../ng-practera.service';
 })
 export class LoginComponent {
 
-  callApi = this.practeraService.getLibraryConfig().callApi;
+  callApi = true;
 
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
@@ -28,7 +28,9 @@ export class LoginComponent {
   constructor(
     private utils: UtilsService,
     private readonly practeraService: NgPracteraService,
-  ) {}
+  ) {
+    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+  }
 
   login(): any {
     if (this.utils.isEmpty(this.loginForm.value.username) || this.utils.isEmpty(this.loginForm.value.password)) {

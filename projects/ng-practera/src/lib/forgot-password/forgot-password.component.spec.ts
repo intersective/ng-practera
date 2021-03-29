@@ -22,7 +22,7 @@ describe('ForgotPasswordComponent', () => {
         UtilsService,
         {
           provide: NgPracteraService,
-          useValue: jasmine.createSpyObj('NgPracteraService', ['forgotPassword'])
+          useValue: jasmine.createSpyObj('NgPracteraService', ['forgotPassword', 'getLibraryConfig'])
         }
       ]
     })

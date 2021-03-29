@@ -1,8 +1,8 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { BrowserStorageService } from './services/storage/storage.service';
 
-import { LibConfigService } from './ng-practera.module';
+export const LibConfigService = new InjectionToken<LibConfig>('LibConfig');
 
 export interface LibConfig {
   env: string;

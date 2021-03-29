@@ -20,7 +20,7 @@ describe('MfaRegisterComponent', () => {
       providers: [
         {
           provide: NgPracteraService,
-          useValue: jasmine.createSpyObj('NgPracteraService', ['mfaRegister'])
+          useValue: jasmine.createSpyObj('NgPracteraService', ['mfaRegister', 'getLibraryConfig'])
         },
         {
           provide: UtilsService,

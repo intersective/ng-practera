@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
     email: null,
     key: null
   };
-  callApi = this.practeraService.getLibraryConfig().callApi;
+  callApi = true;
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() verifySuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() registerSuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
@@ -52,6 +52,7 @@ export class RegisterComponent implements OnInit {
     private readonly utils: UtilsService,
     private readonly modalController: ModalController
   ) {
+    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
     this.registerationForm = new FormGroup({
       email: new FormControl('', [Validators.email]),
       password: new FormControl('', [

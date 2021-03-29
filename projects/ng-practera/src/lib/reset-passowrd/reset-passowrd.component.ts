@@ -9,7 +9,7 @@ import { NgPracteraService } from '../ng-practera.service';
 })
 export class ResetPassowrdComponent {
 
-  callApi = this.practeraService.getLibraryConfig().callApi;
+  callApi = true;
 
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
@@ -26,7 +26,9 @@ export class ResetPassowrdComponent {
 
   constructor(
     private readonly practeraService: NgPracteraService
-  ) { }
+  ) {
+    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+  }
 
   resetPassword(): any {
     const data = {

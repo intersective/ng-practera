@@ -11,9 +11,7 @@ import { ResetPassowrdComponent } from './reset-passowrd/reset-passowrd.componen
 import { RegisterComponent } from './register/register.component';
 import { TermsConditionsPreviewComponent } from './terms-conditions-preview/terms-conditions-preview.component';
 import { DirectLinkComponent } from './direct-link/direct-link.component';
-import { NgPracteraService, LibConfig } from './ng-practera.service';
-
-export const LibConfigService = new InjectionToken<LibConfig>('LibConfig');
+import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +44,7 @@ export const LibConfigService = new InjectionToken<LibConfig>('LibConfig');
     DirectLinkComponent]
 })
 export class NgPracteraModule {
-  static forRoot(config: LibConfig): ModuleWithProviders<any> {
+  static forRoot(config: LibConfig): ModuleWithProviders<NgPracteraModule> {
     return {
       ngModule: NgPracteraModule,
       providers: [

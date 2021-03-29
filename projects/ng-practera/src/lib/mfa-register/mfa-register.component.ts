@@ -8,7 +8,7 @@ import { NgPracteraService } from '../ng-practera.service';
 })
 export class MfaRegisterComponent implements OnInit {
 
-  callApi = this.practeraService.getLibraryConfig().callApi;
+  callApi = true;
 
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
@@ -97,7 +97,9 @@ export class MfaRegisterComponent implements OnInit {
 
   constructor(
     private readonly practeraService: NgPracteraService,
-  ) { }
+  ) {
+    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+  }
 
   ngOnInit(): void {
     this._initcomponent();

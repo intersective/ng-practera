@@ -34,7 +34,7 @@ describe('RegisterComponent', () => {
         },
         {
           provide: NgPracteraService,
-          useValue: jasmine.createSpyObj('NgPracteraService', ['verifyRegistration', 'checkDomain', 'saveRegistration', 'login'])
+          useValue: jasmine.createSpyObj('NgPracteraService', ['verifyRegistration', 'checkDomain', 'saveRegistration', 'login', 'getLibraryConfig'])
         }
       ]
     })

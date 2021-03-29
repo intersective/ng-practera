@@ -9,7 +9,7 @@ import { NgPracteraService } from '../ng-practera.service';
 })
 export class MfaVerifyComponent implements OnInit {
 
-  callApi = this.practeraService.getLibraryConfig().callApi;
+  callApi = true;
 
   @Output() verifySuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() sendSMSSuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
@@ -23,7 +23,9 @@ export class MfaVerifyComponent implements OnInit {
 
   constructor(
     private readonly practeraService: NgPracteraService,
-  ) { }
+  ) {
+    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+  }
 
   ngOnInit(): void {
     this.verifyCode = '';

@@ -24,7 +24,7 @@ describe('LoginComponent', () => {
       providers: [
         {
           provide: NgPracteraService,
-          useValue: jasmine.createSpyObj('NgPracteraService', ['login'])
+          useValue: jasmine.createSpyObj('NgPracteraService', ['login', 'getLibraryConfig'])
         },
         {
           provide: Router,
