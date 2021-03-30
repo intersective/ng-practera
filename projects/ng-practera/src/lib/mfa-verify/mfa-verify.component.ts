@@ -24,12 +24,18 @@ export class MfaVerifyComponent implements OnInit {
   constructor(
     private readonly practeraService: NgPracteraService,
   ) {
-    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+    this.getConfig();
   }
 
   ngOnInit(): void {
     this.verifyCode = '';
     this.isVerifying = false;
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
+    }
   }
 
   sendSMS(): any {

@@ -98,11 +98,17 @@ export class MfaRegisterComponent implements OnInit {
   constructor(
     private readonly practeraService: NgPracteraService,
   ) {
-    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+    this.getConfig();
   }
 
   ngOnInit(): void {
     this._initcomponent();
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
+    }
   }
 
   private _initcomponent(): void {

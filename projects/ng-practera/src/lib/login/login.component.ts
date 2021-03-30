@@ -29,7 +29,13 @@ export class LoginComponent {
     private utils: UtilsService,
     private readonly practeraService: NgPracteraService,
   ) {
-    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+    this.getConfig();
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
+    }
   }
 
   login(): any {

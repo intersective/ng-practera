@@ -25,7 +25,13 @@ export class ForgotPasswordComponent {
     private readonly practeraService: NgPracteraService,
     private readonly utils: UtilsService,
   ) {
-    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+    this.getConfig();
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
+    }
   }
 
   send(): any {

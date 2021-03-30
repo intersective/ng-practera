@@ -107,6 +107,18 @@ describe('MfaRegisterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.callApi).toEqual(true);
+  });
+
+  describe('when testing getConfig()', () => {
+    it(`callApi should be false if service return false`, () => {
+      serviceSpy.getLibraryConfig.and.returnValue({
+        callApi: false,
+        env: 'local'
+      });
+      component.getConfig();
+      expect(component.callApi).toEqual(false);
+    });
   });
 
   it('should load default contact number format when init component', () => {

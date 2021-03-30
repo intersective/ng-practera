@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
     private readonly utils: UtilsService,
     private readonly modalController: ModalController
   ) {
-    this.callApi = this.practeraService.getLibraryConfig() ? this.practeraService.getLibraryConfig().callApi : true;
+    this.getConfig();
     this.registerationForm = new FormGroup({
       email: new FormControl('', [Validators.email]),
       password: new FormControl('', [
@@ -67,6 +67,12 @@ export class RegisterComponent implements OnInit {
     // call link virify API calls if callApi is true.
     if (this.callApi) {
       this.verifyRegistrationLink();
+    }
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
     }
   }
 
