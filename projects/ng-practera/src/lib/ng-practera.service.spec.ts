@@ -1,11 +1,11 @@
-import { TestBed, fakeAsync, async } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserStorageService } from './services/storage/storage.service';
 import { UtilsService } from './services/utils/utils.service';
 
-import { NgPracteraService } from './ng-practera.service';
+import { NgPracteraService, LibConfigService } from './ng-practera.service';
 
 describe('NgPracteraService', () => {
   let service: NgPracteraService;
@@ -18,6 +18,13 @@ describe('NgPracteraService', () => {
       imports: [HttpClientModule],
       providers: [
         NgPracteraService,
+        {
+          provide: LibConfigService,
+          useValue: {
+            env: 'local',
+            callApi: true
+          }
+        },
         {
           provide: Router,
           useValue: {

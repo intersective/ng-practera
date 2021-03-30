@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { NgPracteraService } from '../ng-practera.service';
 
@@ -9,7 +9,7 @@ import { NgPracteraService } from '../ng-practera.service';
 })
 export class MfaVerifyComponent implements OnInit {
 
-  @Input() callApi ? = true;
+  callApi = true;
 
   @Output() verifySuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() sendSMSSuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
@@ -22,12 +22,20 @@ export class MfaVerifyComponent implements OnInit {
   isVerifying = false;
 
   constructor(
-    private readonly practeraService: NgPracteraService
-  ) { }
+    private readonly practeraService: NgPracteraService,
+  ) {
+    this.getConfig();
+  }
 
   ngOnInit(): void {
     this.verifyCode = '';
     this.isVerifying = false;
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
+    }
   }
 
   sendSMS(): any {

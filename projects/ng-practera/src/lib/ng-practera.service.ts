@@ -1,6 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { BrowserStorageService } from './services/storage/storage.service';
+
+export const LibConfigService = new InjectionToken<LibConfig>('LibConfig');
+
+export interface LibConfig {
+  env: string;
+  callApi: boolean;
+}
 
 export interface StackObject {
   uuid: string;
@@ -58,8 +65,17 @@ interface ExperienceConfig {
 export class NgPracteraService {
 
   constructor(
-    private readonly storage: BrowserStorageService
+    private readonly storage: BrowserStorageService,
+    @Inject(LibConfigService) private config: LibConfig
   ) { }
+
+  /**
+   * Method will return library config set when library import to an app from module.
+   * @returns Object - LibConfig Object
+   */
+  getLibraryConfig(): LibConfig {
+    return this.config;
+  }
 
   /**
    * login

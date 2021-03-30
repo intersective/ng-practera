@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 import { UtilsService } from '../services/utils/utils.service';
 import { NgPracteraService } from '../ng-practera.service';
@@ -11,8 +11,7 @@ import { NgPracteraService } from '../ng-practera.service';
 export class ForgotPasswordComponent {
 
 
-  @Input() callApi ? = true;
-
+  callApi = true;
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() sendEmailClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
@@ -24,8 +23,16 @@ export class ForgotPasswordComponent {
 
   constructor(
     private readonly practeraService: NgPracteraService,
-    private readonly utils: UtilsService
-  ) { }
+    private readonly utils: UtilsService,
+  ) {
+    this.getConfig();
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
+    }
+  }
 
   send(): any {
     // basic validation

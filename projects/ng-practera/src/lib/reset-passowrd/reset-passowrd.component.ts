@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
 import { NgPracteraService } from '../ng-practera.service';
 
@@ -9,7 +9,7 @@ import { NgPracteraService } from '../ng-practera.service';
 })
 export class ResetPassowrdComponent {
 
-  @Input() callApi ? = true;
+  callApi = true;
 
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
@@ -25,8 +25,16 @@ export class ResetPassowrdComponent {
   }, { validators: this.checkPasswordMatching });
 
   constructor(
-    private readonly practeraService: NgPracteraService,
-  ) { }
+    private readonly practeraService: NgPracteraService
+  ) {
+    this.getConfig();
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
+    }
+  }
 
   resetPassword(): any {
     const data = {

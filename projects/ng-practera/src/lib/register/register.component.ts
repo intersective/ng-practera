@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
     email: null,
     key: null
   };
-  @Input() callApi ? = true;
+  callApi = true;
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() verifySuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() registerSuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
@@ -50,8 +50,9 @@ export class RegisterComponent implements OnInit {
   constructor(
     private readonly practeraService: NgPracteraService,
     private readonly utils: UtilsService,
-    private readonly modalController: ModalController,
+    private readonly modalController: ModalController
   ) {
+    this.getConfig();
     this.registerationForm = new FormGroup({
       email: new FormControl('', [Validators.email]),
       password: new FormControl('', [
@@ -66,6 +67,12 @@ export class RegisterComponent implements OnInit {
     // call link virify API calls if callApi is true.
     if (this.callApi) {
       this.verifyRegistrationLink();
+    }
+  }
+
+  getConfig(): void {
+    if (this.practeraService.getLibraryConfig()) {
+      this.callApi = this.practeraService.getLibraryConfig().callApi;
     }
   }
 

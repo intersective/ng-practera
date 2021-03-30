@@ -26,7 +26,7 @@ describe('ResetPassowrdComponent', () => {
         UrlSerializer,
         {
           provide: NgPracteraService,
-          useValue: jasmine.createSpyObj('NgPracteraService', ['verifyResetPassword', 'resetPassword'])
+          useValue: jasmine.createSpyObj('NgPracteraService', ['verifyResetPassword', 'resetPassword', 'getLibraryConfig'])
         }
       ],
     })
@@ -42,6 +42,18 @@ describe('ResetPassowrdComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.callApi).toEqual(true);
+  });
+
+  describe('when testing getConfig()', () => {
+    it(`callApi should be false if service return false`, () => {
+      serviceSpy.getLibraryConfig.and.returnValue({
+        callApi: false,
+        env: 'local'
+      });
+      component.getConfig();
+      expect(component.callApi).toEqual(false);
+    });
   });
 
   describe('when testing resetPassword()', () => {
