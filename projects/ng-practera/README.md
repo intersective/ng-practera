@@ -1,34 +1,37 @@
-## @practera/ng-practera
+# @practera/ng-practera
 
 Angular components library made using Ionic components for Practera.
 
 This angular library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
 
-## Health
+# Health
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=alert_status&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=coverage&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=security_rating&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=sqale_rating&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=bugs&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=intersective_ng-practera&metric=code_smells&token=19814e72d32dd8ab193bb168320116a41f84beb3)](https://sonarcloud.io/dashboard?id=intersective_ng-practera)
 
-## Table of Contents
-- [@practera/ng-practera](#practerang-practera)
-- [Health](#health)
-- [Table of Contents](#table-of-contents)
+# Table of Contents
 - [Install](#install)
 - [Import](#import)
+    - [TypeScript](#typescript)
+    - [HTML](#html)
+- [Pages](#pages)
+    - [Login](#login)
+    - [Forgot Password](#forgot-password)
+    - [Reset Password](#reset-password)
+    - [Registration](#registration)
+    - [MFA Register](#mfa-register)
+    - [MFA Verify](#mfa-verify)
 - [Components](#components)
-  - [Branding logo](#branding-logo)
-  - [Direct link](#direct-link)
-  - [Login](#login)
-  - [Forgot Password](#forgot-password)
-  - [Reset Password](#reset-password)
-  - [Registration](#registration)
-  - [MFA Register](#mfa-register)
-  - [MFA Verify](#mfa-verify)
+    - [Branding logo](#branding-logo)
+    - [Direct link](#direct-link)
 
-## Install
+# Install
 ```
 $ npm install @practera/ng-practera
 ```
-## Import
+# Import
+
+### TypeScript
+
 import the component in the module file that you need to use it.
 ``` ts
 import { NgPracteraModule } from '@practera/ng-practera';
@@ -49,39 +52,16 @@ put `NgPracteraModule` under `imports` of the module.
 | env | `'sandbox'`, `'stage'`, `'live'` default is `'sandbox'` | You need to pass angular app envirenment. This use to Identify and call correct API and render correct components|
 | callApi | `true` or `false` default is `true` | This is for Enable and Disable calling APIs. if `callApi` is `true` then components will call APIs and return responses to the call back funtions. if `callApi` is `false` components will not call APIs.|
 
-## Components
-
-### Branding logo
-Component will show the priview of the image pass to it. It mainly use for custom branding in authendication pages like login, forgot passowrd, etc to show client logo on the page.
+### HTML
+Put libary page tags between `ion-content`.
+Eg:-
 ```html
-<prac-branding-logo></prac-branding-logo>
-```
-**properties**
-| Property name | Description |
-| :------------ | :----------- |
-| bradingLogo | logo for custom branding. `Not Optional` |
-```html
-<prac-branding-logo></prac-branding-logo>
-
-<prac-branding-logo [bradingLogo]="customeLogo"></prac-branding-logo>
-
-<prac-branding-logo [bradingLogo]="'/assets/logo.svg'"></prac-branding-logo>
+<ion-content>
+  <prac-login></prac-login>
+</ion-content>
 ```
 
-### Direct link
-Component will show the waiting message with spinner for the direct links.
-```html
-<prac-direct-link></prac-direct-link>
-```
-**properties**
-| Property name | Description |
-| :------------ | :----------- |
-| waitingMessage | Waiting message to show on the page. `Not Optional` |
-```html
-<prac-direct-link></prac-direct-link>
-
-<prac-direct-link [waitingMessage]="your waiting message"></prac-direct-link>
-```
+# Pages
 
 ### Login
 Component is the login UI. it have login form (text fields, buttons), forgot passowrd link and 'Powered by practera' section.
@@ -91,21 +71,23 @@ Component is the login UI. it have login form (text fields, buttons), forgot pas
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
-| successCallBack | Menthod to call after login api return success response. `Optional property`, if `callApi` config is `true` this need to pass to get api return response. | 
-| errorCallBack | Menthod to call after login api return error response or any other error. `Not Optional` |
-| forgotPasswordCallBack | Menthod to call after click on forgot password link. `Not Optional`  |
-| loginClickCallBack | Menthod to call after click on login button. `Optional property`, if `callApi` config is `false` this need to pass to get login button click. |
+| successCallBack | **`Optional property`**. Menthod to call after login api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
+| errorCallBack | **`Required property`**. Menthod to call after login api return error response or any other error. |
+| forgotPasswordCallBack | **`Required property`**. Menthod to call after click on forgot password link.  |
+| loginClickCallBack | **`Optional property`**. Menthod to call after click on login button. If `callApi` config is `false` this need to pass to get login button click. |
 
 ```html
-<prac-login 
-(successCallBack)="successCallBack($event)" 
-(errorCallBack)="errorCallBack($event)"
-(forgotPasswordCallBack)="forgotPasswordCallBack($event)"></prac-login>
+<ion-content color="light" class="ion-text-center">
+  <prac-login 
+  (successCallBack)="successCallBack($event)" 
+  (errorCallBack)="errorCallBack($event)"
+  (forgotPasswordCallBack)="forgotPasswordCallBack($event)"></prac-login>
 
-<prac-login 
-(errorCallBack)="errorCallBack($event)"
-(forgotPasswordCallBack)="forgotPasswordCallBack($event)" 
-(loginClickCallBack)="loginClickCallBack($event)"></prac-login>
+  <prac-login 
+  (errorCallBack)="errorCallBack($event)"
+  (forgotPasswordCallBack)="forgotPasswordCallBack($event)" 
+  (loginClickCallBack)="loginClickCallBack($event)"></prac-login>
+</ion-content>
 ```
 
 ### Forgot Password
@@ -116,22 +98,24 @@ Component is the forgot passowrd UI. it have text field to enter email, send ema
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
-| successCallBack | Menthod to call after forgot password api return success response. `Optional property`, if `callApi` config is `true` this need to pass to get api return response. | 
-| errorCallBack | Menthod to call after forgot password api return error response or any other error. `Not Optional` |
-| sendEmailClickCallBack | Menthod to call after click on send email button. `Optional property`, if `callApi` config is `false` this need to pass to get send email button click.  |
-| loginClickCallBack | Menthod to call after click on login link. `Not Optional` |
+| successCallBack | **`Optional property`**. Menthod to call after forgot password api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
+| errorCallBack | **`Required property`**. Menthod to call after forgot password api return error response or any other error. |
+| sendEmailClickCallBack | **`Optional property`**. Menthod to call after click on send email button. If `callApi` config is `false` this need to pass to get send email button click.  |
+| loginClickCallBack | **`Required property`**. Menthod to call after click on login link.` |
 
 ```html
-<prac-forgot-password 
-(successCallBack)="successCallBack($event)" 
-(errorCallBack)="errorCallBack($event)" 
-(sendEmailClickCallBack)="sendEmailClickCallBack($event)"
-(loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
+<ion-content color="light" class="ion-text-center">
+  <prac-forgot-password 
+  (successCallBack)="successCallBack($event)" 
+  (errorCallBack)="errorCallBack($event)" 
+  (sendEmailClickCallBack)="sendEmailClickCallBack($event)"
+  (loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
 
-<prac-forgot-password 
-(errorCallBack)="errorCallBack($event)"
-(sendEmailClickCallBack)="sendEmailClickCallBack($event)" 
-(loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
+  <prac-forgot-password 
+  (errorCallBack)="errorCallBack($event)"
+  (sendEmailClickCallBack)="sendEmailClickCallBack($event)" 
+  (loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
+</ion-content>
 ```
 
 ### Reset Password
@@ -142,21 +126,23 @@ Component is the Reset password page UI. it have form with two text field and bu
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
-| successCallBack | Menthod to call after password rest api return success response. `Optional property`, if `callApi` config is `true` this need to pass to get api return response. | 
-| errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
-| resetClickCallBack | Menthod to call after click on 'change password' button. `Optional property`, if `callApi` config is `false` this need to pass to get change password button click.  |
-| loginClickCallBack | Menthod to call after click on login link. This need to pass to get login link click. `Not Optional` |
+| successCallBack | **`Optional property`**. Menthod to call after password rest api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
+| errorCallBack | **`Required property`**. Menthod to call after api return error response or any other error. |
+| resetClickCallBack | **`Optional property`**. Menthod to call after click on 'change password' button. If `callApi` config is `false` this need to pass to get change password button click.  |
+| loginClickCallBack | **`Required property`**. Menthod to call after click on login link. This need to pass to get login link click. |
 
 ```html
-<prac-reset-passowrd 
-(successCallBack)="successCallBack($event)"
-(errorCallBack)="errorCallBack($event)"
-(loginClickCallBack)="loginClickCallBack($event)" ></prac-reset-passowrd>
+<ion-content color="light" class="ion-text-center">
+  <prac-reset-passowrd 
+  (successCallBack)="successCallBack($event)"
+  (errorCallBack)="errorCallBack($event)"
+  (loginClickCallBack)="loginClickCallBack($event)"></prac-reset-passowrd>
 
-<prac-reset-passowrd 
-(errorCallBack)="errorCallBack($event)"
-(loginClickCallBack)="loginClickCallBack($event)" 
-(resetClickCallBack)="resetClickCallBack($event)"></prac-reset-passowrd>
+  <prac-reset-passowrd 
+  (errorCallBack)="errorCallBack($event)"
+  (loginClickCallBack)="loginClickCallBack($event)" 
+  (resetClickCallBack)="resetClickCallBack($event)"></prac-reset-passowrd>
+</ion-content>
 ```
 
 ### Registration
@@ -167,13 +153,13 @@ Component is the Registration page UI. It contains, unregister user direct link 
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
-| unRegisteredDirectLink | For indicate unregisterd users using direct link to navigate to register page. default value is `false`. `Optional property`, pass it only if registration link have it.|
-| domain | To get configuration of the app related to domain URL. default value is `''`, empty string. Pass domain URL as `string` value.`Optional property`, if `callApi` config is `true` this need to pass to get config of the app. |
-| userPrams | User `email` and the `key` came in the registration link. default value is both `null`. `Not Optional`, need to pass this to render UI properly and also to verify link if `callApi` config is `true`. |
-| verifySuccessCallBack | Menthod to call after verifying register link and get configuration for the app. Will return both API call response together `Optional property`, if `callApi` config is `true` this need to pass to get APIs return responses. | 
-| registerSuccessCallBack | Menthod to call after registration and login APIs return success responses. Both response will return together because after registration done login also happening. `Optional property`, if `callApi` config is `true` this need to pass to get APIs return responses. | 
-| errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
-| registerClickCallBack | Menthod to call after click on 'register' button. `Optional property`, if `callApi` config is `false` this need to pass to get 'register' button click.  |
+| unRegisteredDirectLink | **`Optional property`**. For indicate unregisterd users using direct link to navigate to register page. default value is `false`. Pass it only if registration link have it.|
+| domain | **`Optional property`**. To get configuration of the app related to domain URL. default value is `''`, empty string. Pass domain URL as `string` value. If `callApi` config is `true` this need to pass to get config of the app. |
+| userPrams | **`Required property`**. User `email` and the `key` came in the registration link. default value is both `null`. Need to pass this to render UI properly and also to verify link if `callApi` config is `true`. |
+| verifySuccessCallBack | **`Optional property`**. Menthod to call after verifying register link and get configuration for the app. Will return both API call response together. If `callApi` config is `true` this need to pass to get APIs return responses. | 
+| registerSuccessCallBack | **`Optional property`**. Menthod to call after registration and login APIs return success responses. Both response will return together because after registration done login also happening. If `callApi` config is `true` this need to pass to get APIs return responses. | 
+| errorCallBack | **`Required property`**. Menthod to call after api return error response or any other error. |
+| registerClickCallBack | **`Optional property`**. Menthod to call after click on 'register' button. If `callApi` config is `false` this need to pass to get 'register' button click.  |
 
 **RelatedData Formats**
 - domain - sample URL value
@@ -203,25 +189,27 @@ Component is the Registration page UI. It contains, unregister user direct link 
   ```
 
 ```html
-<prac-register
-[domain]="app domain"
-[userPrams]="register link pram"
-(verifySuccessCallBack)="verifySuccessCallBack($event)"
-(registerSuccessCallBack)="registerSuccessCallBack($event)"
-(errorCallBack)="errorCallBack($event)" ></prac-register>
+<ion-content color="light" class="ion-text-center">
+  <prac-register
+  [domain]="app domain"
+  [userPrams]="register link pram"
+  (verifySuccessCallBack)="verifySuccessCallBack($event)"
+  (registerSuccessCallBack)="registerSuccessCallBack($event)"
+  (errorCallBack)="errorCallBack($event)" ></prac-register>
 
-<prac-register
-[unRegisteredDirectLink]="true" 
-[domain]="app domain"
-[userPrams]="register link pram"
-(verifySuccessCallBack)="verifySuccessCallBack($event)"
-(registerSuccessCallBack)="registerSuccessCallBack($event)"
-(errorCallBack)="errorCallBack($event)" ></prac-register>
+  <prac-register
+  [unRegisteredDirectLink]="true" 
+  [domain]="app domain"
+  [userPrams]="register link pram"
+  (verifySuccessCallBack)="verifySuccessCallBack($event)"
+  (registerSuccessCallBack)="registerSuccessCallBack($event)"
+  (errorCallBack)="errorCallBack($event)" ></prac-register>
 
-<prac-register 
-[userPrams]="register link pram"
-(errorCallBack)="errorCallBack($event)"
-(registerClickCallBack)="registerClickCallBack($event)"></prac-register>
+  <prac-register 
+  [userPrams]="register link pram"
+  (errorCallBack)="errorCallBack($event)"
+  (registerClickCallBack)="registerClickCallBack($event)"></prac-register>
+</ion-content>
 ```
 
 ### MFA Register
@@ -232,21 +220,23 @@ Component is the MFA Register page UI. it have dropdown to select contury, text 
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
-| successCallBack | Menthod to call after mfa register api return success response. `Optional property`, if `callApi` config is `true` this need to pass to get api return response. | 
-| errorCallBack | Menthod to call after mfa register api return error response or any other error. `Not Optional` |
-| registerClickCallBack | Menthod to call after click on register button. `Optional property`, if `callApi` config is `false` this need to pass to get send email button click.  |
-| loginClickCallBack | Menthod to call after click on login link. `Not Optional` |
+| successCallBack | **`Optional property`**. Menthod to call after mfa register api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
+| errorCallBack | **`Required property`**. Menthod to call after mfa register api return error response or any other error. |
+| registerClickCallBack | **`Optional property`**. Menthod to call after click on register button. If `callApi` config is `false` this need to pass to get send email button click.  |
+| loginClickCallBack | **`Required property`**. Menthod to call after click on login link.  |
 
 ```html
-<prac-mfa-register 
-(successCallBack)="successCallBack($event)" 
-(errorCallBack)="errorCallBack($event)" 
-(loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
+<ion-content color="light" class="ion-text-center">
+  <prac-mfa-register 
+  (successCallBack)="successCallBack($event)" 
+  (errorCallBack)="errorCallBack($event)" 
+  (loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
 
-<prac-mfa-register 
-(errorCallBack)="errorCallBack($event)"
-(registerClickCallBack)="registerClickCallBack($event)" 
-(loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
+  <prac-mfa-register 
+  (errorCallBack)="errorCallBack($event)"
+  (registerClickCallBack)="registerClickCallBack($event)" 
+  (loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
+</ion-content>
 ```
 
 ### MFA Verify
@@ -257,20 +247,59 @@ Component is the MFA Verify page UI. it have button to send SMS, text field to t
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
-| verifySuccessCallBack | Menthod to call after mfa verify api return success response. `Optional property`, if `callApi` config is `true` this need to pass to get api return response. | 
-| sendSMSSuccessCallBack | Menthod to call after send sms api return success response. `Optional property`, if `callApi` config is `true` this need to pass to get api return response. | 
-| errorCallBack | Menthod to call after api return error response or any other error. `Not Optional` |
-| verifyClickCallBack | Menthod to call after click on 'verify code' button. `Optional property`, if `callApi` config is `false` this need to pass to get verify code button click.  |
-| sendSMSClickCallBack | Menthod to call after click on send SMS button. `Optional property`, if `callApi` config is `false` this need to pass to get send SMS button click.  |
+| verifySuccessCallBack | **`Optional property`**. Menthod to call after mfa verify api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
+| sendSMSSuccessCallBack | **`Optional property`**. Menthod to call after send sms api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
+| errorCallBack | **`Required property`**. Menthod to call after api return error response or any other error. |
+| verifyClickCallBack | **`Optional property`**. Menthod to call after click on 'verify code' button. If `callApi` config is `false` this need to pass to get verify code button click.  |
+| sendSMSClickCallBack | **`Optional property`**. Menthod to call after click on send SMS button. If `callApi` config is `false` this need to pass to get send SMS button click.  |
 
 ```html
-<prac-mfa-verify 
-(verifySuccessCallBack)="verifySuccessCallBack($event)"
-(sendSMSSuccessCallBack)="sendSMSSuccessCallBack($event)" 
-(errorCallBack)="errorCallBack($event)" ></prac-mfa-verify>
+<ion-content color="light" class="ion-text-center">
+  <prac-mfa-verify 
+  (verifySuccessCallBack)="verifySuccessCallBack($event)"
+  (sendSMSSuccessCallBack)="sendSMSSuccessCallBack($event)" 
+  (errorCallBack)="errorCallBack($event)" ></prac-mfa-verify>
 
-<prac-mfa-verify 
-(errorCallBack)="errorCallBack($event)"
-(verifyClickCallBack)="verifyClickCallBack($event)" 
-(sendSMSClickCallBack)="sendSMSClickCallBack($event)"></prac-mfa-verify>
+  <prac-mfa-verify 
+  (errorCallBack)="errorCallBack($event)"
+  (verifyClickCallBack)="verifyClickCallBack($event)" 
+  (sendSMSClickCallBack)="sendSMSClickCallBack($event)"></prac-mfa-verify>
+</ion-content>
+```
+
+# Components
+
+### Branding logo
+Component will show the preview of the image pass to it. It is mainly used for custom branding in authentication pages like login, forgot passowrd, etc to show client logo on the page.
+```html
+<prac-branding-logo></prac-branding-logo>
+```
+**properties**
+| Property name | Description |
+| :------------ | :----------- |
+| bradingLogo | **`Required property`**. logo for custom branding.` |
+```html
+<ion-content color="light" class="ion-text-center">
+
+  <prac-branding-logo [bradingLogo]="customeLogo"></prac-branding-logo>
+
+  <prac-branding-logo [bradingLogo]="'/assets/logo.svg'"></prac-branding-logo>
+</ion-content>
+```
+
+### Direct link
+Component will show the waiting message with spinner for the direct links.
+```html
+<prac-direct-link></prac-direct-link>
+```
+**properties**
+| Property name | Description |
+| :------------ | :----------- |
+| waitingMessage | **`Optional property`**. Waiting message to show on the page.` |
+```html
+<ion-content color="light" class="ion-text-center">
+  <prac-direct-link></prac-direct-link>
+
+  <prac-direct-link [waitingMessage]="your waiting message"></prac-direct-link>
+</ion-content>
 ```
