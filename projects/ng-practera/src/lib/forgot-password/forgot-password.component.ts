@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 
 import { UtilsService } from '../services/utils/utils.service';
 import { NgPracteraService } from '../ng-practera.service';
@@ -12,6 +12,7 @@ export class ForgotPasswordComponent {
 
 
   callApi = true;
+  @Input() bradingLogo = '';
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() sendEmailClickCallBack?: EventEmitter<any> = new EventEmitter<any>();

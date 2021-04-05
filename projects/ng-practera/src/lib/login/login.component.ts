@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 import { UtilsService } from '../services/utils/utils.service';
@@ -13,6 +13,7 @@ export class LoginComponent {
 
   callApi = true;
 
+  @Input() bradingLogo = '';
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() forgotPasswordCallBack: EventEmitter<any> = new EventEmitter<any>();

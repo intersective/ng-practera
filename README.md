@@ -71,6 +71,7 @@ Component is the login UI. it have login form (text fields, buttons), forgot pas
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
+| bradingLogo | **`Optional property`**. Logo for custom branding. This Logo showing on top of the page.|
 | successCallBack | **`Optional property`**. Menthod to call after login api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
 | errorCallBack | **`Required property`**. Menthod to call after login api return error response or any other error. |
 | forgotPasswordCallBack | **`Required property`**. Menthod to call after click on forgot password link.  |
@@ -79,11 +80,13 @@ Component is the login UI. it have login form (text fields, buttons), forgot pas
 ```html
 <ion-content color="light" class="ion-text-center">
   <prac-login 
+  [bradingLogo]="customLogo"
   (successCallBack)="successCallBack($event)" 
   (errorCallBack)="errorCallBack($event)"
   (forgotPasswordCallBack)="forgotPasswordCallBack($event)"></prac-login>
 
   <prac-login 
+  [bradingLogo]="customLogo"
   (errorCallBack)="errorCallBack($event)"
   (forgotPasswordCallBack)="forgotPasswordCallBack($event)" 
   (loginClickCallBack)="loginClickCallBack($event)"></prac-login>
@@ -98,6 +101,7 @@ Component is the forgot passowrd UI. it have text field to enter email, send ema
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
+| bradingLogo | **`Optional property`**. Logo for custom branding. This Logo showing on top of the page.|
 | successCallBack | **`Optional property`**. Menthod to call after forgot password api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
 | errorCallBack | **`Required property`**. Menthod to call after forgot password api return error response or any other error. |
 | sendEmailClickCallBack | **`Optional property`**. Menthod to call after click on send email button. If `callApi` config is `false` this need to pass to get send email button click.  |
@@ -106,12 +110,14 @@ Component is the forgot passowrd UI. it have text field to enter email, send ema
 ```html
 <ion-content color="light" class="ion-text-center">
   <prac-forgot-password 
+  [bradingLogo]="customLogo"
   (successCallBack)="successCallBack($event)" 
   (errorCallBack)="errorCallBack($event)" 
   (sendEmailClickCallBack)="sendEmailClickCallBack($event)"
   (loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
 
   <prac-forgot-password 
+  [bradingLogo]="customLogo"
   (errorCallBack)="errorCallBack($event)"
   (sendEmailClickCallBack)="sendEmailClickCallBack($event)" 
   (loginClickCallBack)="loginClickCallBack($event)"></prac-forgot-password>
@@ -126,6 +132,7 @@ Component is the Reset password page UI. it have form with two text field and bu
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
+| bradingLogo | **`Optional property`**. Logo for custom branding. This Logo showing on top of the page.|
 | successCallBack | **`Optional property`**. Menthod to call after password rest api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
 | errorCallBack | **`Required property`**. Menthod to call after api return error response or any other error. |
 | resetClickCallBack | **`Optional property`**. Menthod to call after click on 'change password' button. If `callApi` config is `false` this need to pass to get change password button click.  |
@@ -134,11 +141,13 @@ Component is the Reset password page UI. it have form with two text field and bu
 ```html
 <ion-content color="light" class="ion-text-center">
   <prac-reset-passowrd 
+  [bradingLogo]="customLogo"
   (successCallBack)="successCallBack($event)"
   (errorCallBack)="errorCallBack($event)"
   (loginClickCallBack)="loginClickCallBack($event)"></prac-reset-passowrd>
 
   <prac-reset-passowrd 
+  [bradingLogo]="customLogo"
   (errorCallBack)="errorCallBack($event)"
   (loginClickCallBack)="loginClickCallBack($event)" 
   (resetClickCallBack)="resetClickCallBack($event)"></prac-reset-passowrd>
@@ -220,6 +229,7 @@ Component is the MFA Register page UI. it have dropdown to select contury, text 
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
+| bradingLogo | **`Optional property`**. Logo for custom branding. This Logo showing on top of the page.|
 | successCallBack | **`Optional property`**. Menthod to call after mfa register api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
 | errorCallBack | **`Required property`**. Menthod to call after mfa register api return error response or any other error. |
 | registerClickCallBack | **`Optional property`**. Menthod to call after click on register button. If `callApi` config is `false` this need to pass to get send email button click.  |
@@ -228,11 +238,13 @@ Component is the MFA Register page UI. it have dropdown to select contury, text 
 ```html
 <ion-content color="light" class="ion-text-center">
   <prac-mfa-register 
+  [bradingLogo]="customLogo"
   (successCallBack)="successCallBack($event)" 
   (errorCallBack)="errorCallBack($event)" 
   (loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
 
   <prac-mfa-register 
+  [bradingLogo]="customLogo"
   (errorCallBack)="errorCallBack($event)"
   (registerClickCallBack)="registerClickCallBack($event)" 
   (loginClickCallBack)="loginClickCallBack($event)"></prac-mfa-register>
@@ -247,6 +259,7 @@ Component is the MFA Verify page UI. it have button to send SMS, text field to t
 **properties**
 | Property name | Description      |
 | :------------ | :--------------- |
+| bradingLogo | **`Optional property`**. Logo for custom branding. This Logo showing on top of the page.|
 | verifySuccessCallBack | **`Optional property`**. Menthod to call after mfa verify api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
 | sendSMSSuccessCallBack | **`Optional property`**. Menthod to call after send sms api return success response. If `callApi` config is `true` this need to pass to get api return response. | 
 | errorCallBack | **`Required property`**. Menthod to call after api return error response or any other error. |
@@ -256,11 +269,13 @@ Component is the MFA Verify page UI. it have button to send SMS, text field to t
 ```html
 <ion-content color="light" class="ion-text-center">
   <prac-mfa-verify 
+  [bradingLogo]="customLogo"
   (verifySuccessCallBack)="verifySuccessCallBack($event)"
   (sendSMSSuccessCallBack)="sendSMSSuccessCallBack($event)" 
   (errorCallBack)="errorCallBack($event)" ></prac-mfa-verify>
 
   <prac-mfa-verify 
+  [bradingLogo]="customLogo"
   (errorCallBack)="errorCallBack($event)"
   (verifyClickCallBack)="verifyClickCallBack($event)" 
   (sendSMSClickCallBack)="sendSMSClickCallBack($event)"></prac-mfa-verify>
@@ -277,11 +292,11 @@ Component will show the preview of the image pass to it. It is mainly used for c
 **properties**
 | Property name | Description |
 | :------------ | :----------- |
-| bradingLogo | **`Required property`**. logo for custom branding.` |
+| bradingLogo | **`Required property`**. logo for custom branding. |
 ```html
 <ion-content color="light" class="ion-text-center">
 
-  <prac-branding-logo [bradingLogo]="customeLogo"></prac-branding-logo>
+  <prac-branding-logo [bradingLogo]="customLogo"></prac-branding-logo>
 
   <prac-branding-logo [bradingLogo]="'/assets/logo.svg'"></prac-branding-logo>
 </ion-content>
@@ -295,7 +310,7 @@ Component will show the waiting message with spinner for the direct links.
 **properties**
 | Property name | Description |
 | :------------ | :----------- |
-| waitingMessage | **`Optional property`**. Waiting message to show on the page.` |
+| waitingMessage | **`Optional property`**. Waiting message to show on the page. |
 ```html
 <ion-content color="light" class="ion-text-center">
   <prac-direct-link></prac-direct-link>

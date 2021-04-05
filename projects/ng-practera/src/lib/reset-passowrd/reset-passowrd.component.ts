@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { Validators, FormGroup, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
 import { NgPracteraService } from '../ng-practera.service';
 
@@ -11,6 +11,7 @@ export class ResetPassowrdComponent {
 
   callApi = true;
 
+  @Input() bradingLogo = '';
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() resetClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
