@@ -95,9 +95,7 @@ describe('ResetPassowrdComponent', () => {
       expect(component.errorCallBack.emit).toHaveBeenCalledWith(
         {
           type: 'API',
-          message: `We’ve checked this password against a global database of insecure passwords and your password was on it. <br>
-          Please try again. <br>
-          You can learn more about how we check that <a href="https://haveibeenpwned.com/Passwords">database</a>`,
+          message: `We’ve checked this password against a global database of insecure passwords and your password was on it. <br> Please try again. <br> You can learn more about how we check that <a href="https://haveibeenpwned.com/Passwords">database</a>`,
           error: {
             status: 400,
             error: {passwordCompromised: true}

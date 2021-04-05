@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { NgPracteraService } from '../ng-practera.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class MfaRegisterComponent implements OnInit {
 
   callApi = true;
 
+  @Input() bradingLogo = '';
   @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() registerClickCallBack?: EventEmitter<any> = new EventEmitter<any>();

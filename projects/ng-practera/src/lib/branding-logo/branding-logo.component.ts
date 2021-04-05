@@ -3,8 +3,7 @@ import { BrowserStorageService } from '../services/storage/storage.service';
 
 @Component({
   selector: 'prac-branding-logo',
-  templateUrl: './branding-logo.component.html',
-  styleUrls: ['./branding-logo.component.scss']
+  templateUrl: './branding-logo.component.html'
 })
 export class BrandingLogoComponent {
 
