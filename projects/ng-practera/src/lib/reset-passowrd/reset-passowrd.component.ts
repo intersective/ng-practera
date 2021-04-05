@@ -81,9 +81,7 @@ export class ResetPassowrdComponent {
       error
     };
     if (type === 'API' && statusCode === 400 && error.error && error.error.passwordCompromised) {
-      errorObject.message = `We’ve checked this password against a global database of insecure passwords and your password was on it. <br>
-        Please try again. <br>
-        You can learn more about how we check that <a href="https://haveibeenpwned.com/Passwords">database</a>`;
+      errorObject.message = `We’ve checked this password against a global database of insecure passwords and your password was on it. <br> Please try again. <br> You can learn more about how we check that <a href="https://haveibeenpwned.com/Passwords">database</a>`;
     }
     this.errorCallBack.emit(errorObject);
   }
