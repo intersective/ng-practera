@@ -51,13 +51,14 @@ export class ResetPassowrdComponent {
       res => {
         this.isResetting = false;
         if (this.successCallBack) {
-          return this.successCallBack.emit(res);
+          this.successCallBack.emit(res);
         }
       },
       err => {
         this._handleError('API', err);
       }
     );
+    return null;
   }
 
   checkPasswordMatching(control: AbstractControl): ValidationErrors | null {
@@ -79,14 +80,10 @@ export class ResetPassowrdComponent {
       message: 'Error updating password.Try again',
       error
     };
-    switch (type) {
-      case 'API':
-        if (statusCode === 400 && error.error && error.error.passwordCompromised) {
-          errorObject.message = `We’ve checked this password against a global database of insecure passwords and your password was on it. <br>
-          Please try again. <br>
-          You can learn more about how we check that <a href="https://haveibeenpwned.com/Passwords">database</a>`;
-        }
-        break;
+    if (type === 'API' && statusCode === 400 && error.error && error.error.passwordCompromised) {
+      errorObject.message = `We’ve checked this password against a global database of insecure passwords and your password was on it. <br>
+        Please try again. <br>
+        You can learn more about how we check that <a href="https://haveibeenpwned.com/Passwords">database</a>`;
     }
     this.errorCallBack.emit(errorObject);
   }
