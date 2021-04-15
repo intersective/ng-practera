@@ -13,7 +13,8 @@ export class ForgotPasswordComponent {
 
   callApi = true;
   @Input() bradingLogo = '';
-  @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
+  @Input() internalUse = false;
+  @Output() successCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() sendEmailClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() loginClickCallBack: EventEmitter<any> = new EventEmitter<any>();
@@ -30,7 +31,7 @@ export class ForgotPasswordComponent {
   }
 
   getConfig(): void {
-    if (this.practeraService.getLibraryConfig()) {
+    if (!this.internalUse && this.practeraService.getLibraryConfig()) {
       this.callApi = this.practeraService.getLibraryConfig().callApi;
     }
   }
@@ -52,7 +53,9 @@ export class ForgotPasswordComponent {
       res => {
         this.isSending = false;
         if (this.successCallBack) {
-          this.successCallBack.emit(this.email);
+          this.successCallBack.emit({
+            email: this.email
+          });
         }
         return;
       },

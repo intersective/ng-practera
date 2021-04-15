@@ -11,7 +11,8 @@ export class MfaRegisterComponent implements OnInit {
   callApi = true;
 
   @Input() bradingLogo = '';
-  @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
+  @Input() internalUse = false;
+  @Output() successCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() registerClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() loginClickCallBack: EventEmitter<any> = new EventEmitter<any>();
@@ -107,7 +108,7 @@ export class MfaRegisterComponent implements OnInit {
   }
 
   getConfig(): void {
-    if (this.practeraService.getLibraryConfig()) {
+    if (!this.internalUse && this.practeraService.getLibraryConfig()) {
       this.callApi = this.practeraService.getLibraryConfig().callApi;
     }
   }

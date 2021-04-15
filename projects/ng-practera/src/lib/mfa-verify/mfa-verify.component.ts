@@ -12,8 +12,9 @@ export class MfaVerifyComponent implements OnInit {
   callApi = true;
 
   @Input() bradingLogo = '';
-  @Output() verifySuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
-  @Output() sendSMSSuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
+  @Input() internalUse = false;
+  @Output() verifySuccessCallBack: EventEmitter<any> = new EventEmitter<any>();
+  @Output() sendSMSSuccessCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() verifyClickCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() sendSMSClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
@@ -34,7 +35,7 @@ export class MfaVerifyComponent implements OnInit {
   }
 
   getConfig(): void {
-    if (this.practeraService.getLibraryConfig()) {
+    if (!this.internalUse && this.practeraService.getLibraryConfig()) {
       this.callApi = this.practeraService.getLibraryConfig().callApi;
     }
   }

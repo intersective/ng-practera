@@ -12,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { TermsConditionsPreviewComponent } from './terms-conditions-preview/terms-conditions-preview.component';
 import { DirectLinkComponent } from './direct-link/direct-link.component';
 import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.service';
+import { AuthComponent } from './auth/auth.component';
+import { PopUpComponent } from './services/notification/pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.se
     ResetPassowrdComponent,
     RegisterComponent,
     TermsConditionsPreviewComponent,
-    DirectLinkComponent],
+    DirectLinkComponent,
+    AuthComponent,
+    PopUpComponent],
   imports: [
     IonicModule,
     CommonModule,
@@ -31,7 +35,8 @@ import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.se
     ReactiveFormsModule,
   ],
   entryComponents: [
-    TermsConditionsPreviewComponent
+    TermsConditionsPreviewComponent,
+    PopUpComponent
   ],
   exports: [LoginComponent,
     BrandingLogoComponent,
@@ -41,7 +46,8 @@ import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.se
     ResetPassowrdComponent,
     RegisterComponent,
     TermsConditionsPreviewComponent,
-    DirectLinkComponent]
+    DirectLinkComponent,
+    AuthComponent]
 })
 export class NgPracteraModule {
   static forRoot(config: LibConfig): ModuleWithProviders<NgPracteraModule> {

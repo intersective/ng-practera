@@ -1,6 +1,5 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { DOCUMENT } from '@angular/common';
 import { Observable, Subject } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 // import * as moment from 'moment';
@@ -24,9 +23,7 @@ export class UtilsService {
   // Use to store apikey while user finish MFA actions.
   private apikey = '';
 
-  constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
-  ) {
+  constructor() {
     if (_) {
       this.lodash = _;
     } else {
@@ -105,24 +102,6 @@ export class UtilsService {
   openUrl(url: string, options?: { target: string }): any {
     options = options || {target: '_self' };
     return window.open(url, options.target);
-  }
-
-  changeThemeColor(color: string): void {
-    this.document.documentElement.style.setProperty('--ion-color-primary', color);
-    this.document.documentElement.style.setProperty('--ion-color-primary-shade', color);
-    // get the tint version of the color(20% opacity)
-    this.document.documentElement.style.setProperty('--ion-color-primary-tint', color + '33');
-    // convert hex color to rgb and update css variable
-    const hex = color.replace('#', '');
-    const red = parseInt(hex.substring(0, 2), 16);
-    const green = parseInt(hex.substring(2, 4), 16);
-    const blue = parseInt(hex.substring(4, 6), 16);
-
-    this.document.documentElement.style.setProperty('--ion-color-primary-rgb', `${red},${green},${blue}`);
-  }
-
-  changeCardBackgroundImage(image: string): void {
-    this.document.documentElement.style.setProperty('--practera-card-background-image', `url(\'${image}\')`);
   }
 
   // broadcast the event to whoever subscribed

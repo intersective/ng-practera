@@ -13,6 +13,8 @@ This angular library was generated with [Angular CLI](https://github.com/angular
 - [Import](#import)
     - [TypeScript](#typescript)
     - [HTML](#html)
+- [Workflows](#workflows)
+    - [Login Workflow](#login-workflow)
 - [Pages](#pages)
     - [Login](#login)
     - [Forgot Password](#forgot-password)
@@ -58,6 +60,34 @@ Eg:-
 ```html
 <ion-content>
   <prac-login></prac-login>
+</ion-content>
+```
+
+# Workflows
+Workflows are combination of pages work as one unit. Workflows always calling APIs. If you pass `callApi` as `false` when importing workflows ignoring it and calling APIs.
+
+### Login Workflow
+- This is full login workflow and it have login, forgot password, MFA Register, MFA Verify pages. `MFA pages, that means two factor authendication pages. Not every user have this feature, but if user have that then they need to register their phone number to the system and verify the caodes they getting when they login.`
+- When the workflow load initialy it load `login` page. then user can ether login by entering Username and password or navigate to `forgot password` page and get password rest email by typing user email.
+- When user login by entering Username and password if user need to setup thire phone number then user will navigate to `MFA Register` page. From that page users can register their phone number with system by selecting the country and entering phone number. And after that user will navigate to `MFA Verify` page. From that page user need to enter code they get to their mobile and verify that.
+- If user already register their phone number then they will navigate to `MFA verify` page after login. Then they can verify code to login.
+
+```html
+<prac-auth></prac-auth>
+```
+**properties**
+| Property name | Description      |
+| :------------ | :--------------- |
+| bradingLogo | **`Required property`**. Logo for custom branding. This Logo showing on top of the page.|
+| successCallBack | **`Required property`**. Menthod to call after  success the auth API responses. This is calling when MFA virify success and when login if no MFA thing required. | 
+| errorCallBack | **`Required property`**. Menthod to call after any api return error response or any other error. |
+
+```html
+<ion-content color="light" class="ion-text-center">
+  <prac-auth 
+  [bradingLogo]="customLogo"
+  (successCallBack)="successCallBack($event)" 
+  (errorCallBack)="errorCallBack($event)"></prac-auth>
 </ion-content>
 ```
 

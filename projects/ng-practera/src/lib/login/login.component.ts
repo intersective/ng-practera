@@ -14,7 +14,8 @@ export class LoginComponent {
   callApi = true;
 
   @Input() bradingLogo = '';
-  @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
+  @Input() internalUse = false;
+  @Output() successCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() forgotPasswordCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() loginClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
@@ -34,7 +35,7 @@ export class LoginComponent {
   }
 
   getConfig(): void {
-    if (this.practeraService.getLibraryConfig()) {
+    if (!this.internalUse && this.practeraService.getLibraryConfig()) {
       this.callApi = this.practeraService.getLibraryConfig().callApi;
     }
   }

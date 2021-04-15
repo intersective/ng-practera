@@ -90,30 +90,6 @@ describe('UtilsService', () => {
     });
   });
 
-  describe('changeThemeColor()', () => {
-    it('should access to window.document style properties and update value', () => {
-      const key = 'document';
-      spyOn(service[key].documentElement.style, 'setProperty');
-      const COLOR = '#000000';
-      service.changeThemeColor(COLOR);
-
-      expect(service[key].documentElement.style.setProperty).toHaveBeenCalledWith('--ion-color-primary', COLOR);
-      expect(service[key].documentElement.style.setProperty).toHaveBeenCalledWith('--ion-color-primary-shade', COLOR);
-      expect(service[key].documentElement.style.setProperty).toHaveBeenCalledWith('--ion-color-primary-tint', COLOR + '33');
-      expect(service[key].documentElement.style.setProperty).toHaveBeenCalledWith('--ion-color-primary-rgb', '0,0,0');
-    });
-  });
-
-  // describe('changeCardBackgroundImage()', () => {
-  //   it('should change background image by accessing to document style property', () => {
-  //     spyOn(service['document'].documentElement.style, 'setProperty');
-  //     const TEST_IMAGE = 'test-image.png';
-  //     service.changeCardBackgroundImage(TEST_IMAGE);
-  //     expect(service['document'].documentElement.style.setProperty).
-  // toHaveBeenCalledWith('--practera-card-background-image', `url('${TEST_IMAGE}')`);
-  //   });
-  // });
-
   // describe('utcToLocal()', () => {
   //   const DATE_STRING = '2020-01-01 00:00:00 GMT+0000'; // UTC 2020-01-01 00:00:00
   //   const DATE_WITH_CURRENT_TIMEZONE = new Date(DATE_STRING); // Date with current timezone (non UTC)
