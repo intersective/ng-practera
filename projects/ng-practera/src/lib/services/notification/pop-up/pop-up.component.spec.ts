@@ -44,7 +44,6 @@ describe('PopUpComponent', () => {
     fixture.detectChanges();
     component.confirmed();
     expect(modalCtrlSpy.dismiss.calls.count()).toBe(1);
-    component.redirect = [];
     component.confirmed();
     expect(modalCtrlSpy.dismiss.calls.count()).toBe(2);
   });
