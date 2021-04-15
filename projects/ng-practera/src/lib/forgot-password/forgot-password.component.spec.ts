@@ -77,7 +77,7 @@ describe('ForgotPasswordComponent', () => {
       serviceSpy.forgotPassword.and.returnValue(of({}));
       component.send();
       tick();
-      expect(component.successCallBack.emit).toHaveBeenCalledWith(component.email);
+      expect(component.successCallBack.emit).toHaveBeenCalledWith({email: component.email});
       expect(component.isSending).toBe(false);
     }));
 

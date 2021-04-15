@@ -20,10 +20,12 @@ export interface Config {
 
 export class BrowserStorageService {
   public memoryCache: any;
+  private keyPrefix = 'ngPractera';
 
   constructor(@Inject(BROWSER_STORAGE) public storage: Storage) {}
 
   get(key: string): any {
+    key = `${this.keyPrefix}-${key}`;
     const cached = this.storage.getItem(key);
     if (cached) {
       return JSON.parse(this.storage.getItem(key) || '');
@@ -32,6 +34,7 @@ export class BrowserStorageService {
   }
 
   set(key: string, value: any): void {
+    key = `${this.keyPrefix}-${key}`;
     return this.storage.setItem(key, JSON.stringify(value));
   }
 
@@ -44,6 +47,7 @@ export class BrowserStorageService {
   }
 
   remove(key: string): void {
+    key = `${this.keyPrefix}-${key}`;
     this.storage.removeItem(key);
   }
 
@@ -52,28 +56,28 @@ export class BrowserStorageService {
   }
 
   getUser(): any {
-    return this.get('me') || {};
+    return this.get(`me`) || {};
   }
 
   setUser(user: User): boolean {
-    this.set('me', Object.assign(this.getUser(), user));
+    this.set(`me`, Object.assign(this.getUser(), user));
     return true;
   }
 
   getConfig(): any {
-    return this.get('config') || {};
+    return this.get(`config`) || {};
   }
 
   setConfig(config: Config): boolean {
-    this.set('config', Object.assign(this.getConfig(), config));
+    this.set(`config`, Object.assign(this.getConfig(), config));
     return true;
   }
 
   setCountry(country: string): void {
-    this.set('country', country);
+    this.set(`country`, country);
   }
 
   getCountry(): any {
-    return this.get('country');
+    return this.get(`country`);
   }
 }

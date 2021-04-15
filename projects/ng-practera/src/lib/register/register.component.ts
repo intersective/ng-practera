@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
   // validation errors array
   errors: Array<any> = [];
   showPassword = false;
+  callApi = true;
   // for unregisterd users using direct link
   @Input() unRegisteredDirectLink = false;
   // domain of the app to get the app configuration.
@@ -41,7 +42,6 @@ export class RegisterComponent implements OnInit {
     email: null,
     key: null
   };
-  callApi = true;
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() verifySuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() registerSuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();

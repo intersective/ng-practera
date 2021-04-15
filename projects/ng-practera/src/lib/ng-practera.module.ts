@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { TermsConditionsPreviewComponent } from './terms-conditions-preview/terms-conditions-preview.component';
 import { DirectLinkComponent } from './direct-link/direct-link.component';
 import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.se
     ResetPassowrdComponent,
     RegisterComponent,
     TermsConditionsPreviewComponent,
-    DirectLinkComponent],
+    DirectLinkComponent,
+    AuthComponent],
   imports: [
     IonicModule,
     CommonModule,
@@ -41,7 +43,8 @@ import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.se
     ResetPassowrdComponent,
     RegisterComponent,
     TermsConditionsPreviewComponent,
-    DirectLinkComponent]
+    DirectLinkComponent,
+    AuthComponent]
 })
 export class NgPracteraModule {
   static forRoot(config: LibConfig): ModuleWithProviders<NgPracteraModule> {

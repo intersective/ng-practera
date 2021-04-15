@@ -41,7 +41,7 @@ describe('StorageService', () => {
 
       service.append(key, {text: 'value1'});
 
-      expect(storage.getItem).toHaveBeenCalledWith(key);
+      expect(storage.getItem).toHaveBeenCalledWith(`ngPractera-${key}`);
       expect(storage.setItem).toHaveBeenCalledTimes(1);
     });
   });
@@ -56,7 +56,7 @@ describe('StorageService', () => {
   describe('getUser()', () => {
     it('should get user information ("me" item)', () => {
       service.getUser();
-      expect(storage.getItem).toHaveBeenCalledWith('me');
+      expect(storage.getItem).toHaveBeenCalledWith('ngPractera-me');
     });
   });
 
@@ -65,14 +65,14 @@ describe('StorageService', () => {
       service.getUser = jasmine.createSpy('getUser').and.returnValue({});
 
       service.setUser({ apikey: 'tester' });
-      expect(storage.setItem).toHaveBeenCalledWith('me', '{"apikey":"tester"}');
+      expect(storage.setItem).toHaveBeenCalledWith('ngPractera-me', '{"apikey":"tester"}');
     });
   });
 
   describe('getConfig()', () => {
     it('should retrieve cached config', () => {
       service.getConfig();
-      expect(storage.getItem).toHaveBeenCalledWith('config');
+      expect(storage.getItem).toHaveBeenCalledWith('ngPractera-config');
     });
   });
 
@@ -81,7 +81,7 @@ describe('StorageService', () => {
       service.getConfig = jasmine.createSpy('getConfig').and.returnValue({});
 
       service.setConfig({ logo: 'image' });
-      expect(storage.setItem).toHaveBeenCalledWith('config', '{"logo":"image"}');
+      expect(storage.setItem).toHaveBeenCalledWith('ngPractera-config', '{"logo":"image"}');
     });
   });
 
@@ -90,14 +90,14 @@ describe('StorageService', () => {
       service.getConfig = jasmine.createSpy('country').and.returnValue({});
 
       service.setCountry('test');
-      expect(storage.setItem).toHaveBeenCalledWith('country', '"test"');
+      expect(storage.setItem).toHaveBeenCalledWith('ngPractera-country', '"test"');
     });
   });
 
   describe('getCountry()', () => {
     it('should retrieve cached country', () => {
       service.getCountry();
-      expect(storage.getItem).toHaveBeenCalledWith('country');
+      expect(storage.getItem).toHaveBeenCalledWith('ngPractera-country');
     });
   });
 });

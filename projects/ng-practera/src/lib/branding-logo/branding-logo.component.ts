@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { BrowserStorageService } from '../services/storage/storage.service';
 
 @Component({
   selector: 'prac-branding-logo',
@@ -9,6 +8,6 @@ export class BrandingLogoComponent {
 
   @Input() bradingLogo = '';
 
-  constructor(public storage: BrowserStorageService) { }
+  constructor() { }
 
 }

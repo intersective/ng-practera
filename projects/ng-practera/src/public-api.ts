@@ -11,3 +11,4 @@ export * from './lib/reset-passowrd/reset-passowrd.component';
 export * from './lib/register/register.component';
 export * from './lib/terms-conditions-preview/terms-conditions-preview.component';
 export * from './lib/direct-link/direct-link.component';
+export * from './lib/auth/auth.component';
