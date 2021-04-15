@@ -1,0 +1,35 @@
+<div class="div-logo">
+  <prac-branding-logo [bradingLogo]="bradingLogo"></prac-branding-logo>
+</div>
+
+<ng-container *ngIf="showLogin">
+  <prac-login
+  [internalUse]="true"
+  (errorCallBack)="errorHandleCallBack($event)"
+  (successCallBack)="loginSuccessCallBack($event)"
+  (forgotPasswordCallBack)="forgotPasswordClickCallBack($event)"></prac-login>
+</ng-container>
+
+<ng-container *ngIf="showForgotPassword">
+  <prac-forgot-password
+  [internalUse]="true"
+  (errorCallBack)="errorHandleCallBack($event)"
+  (successCallBack)="forgotPasswordSuccessCallBack($event)"
+  (loginClickCallBack)="backToLoginCallBack($event)"></prac-forgot-password>
+</ng-container>
+
+<ng-container *ngIf="showMFARegister">
+  <prac-mfa-register
+  [internalUse]="true"
+  (errorCallBack)="errorHandleCallBack($event)"
+  (successCallBack)="mfaRegisterSuccessCallBack($event)"
+  (loginClickCallBack)="backToLoginCallBack($event)"></prac-mfa-register>
+</ng-container>
+
+<ng-container *ngIf="showMFAVerify">
+  <prac-mfa-verify
+  [internalUse]="true"
+  (errorCallBack)="errorHandleCallBack($event)"
+  (verifySuccessCallBack)="mfaVirifySuccessCallBack($event)"
+  (sendSMSSuccessCallBack)="sendSMSSuccessCallBack($event)"></prac-mfa-verify>
+</ng-container>

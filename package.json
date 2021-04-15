@@ -1,12 +1,29 @@
 {
   "name": "ng-practera",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Angular/ Ionic UI components for practera",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/intersective/ng-practera.git"
+  },
+  "bugs": {
+    "url": "https://github.com/intersective/ng-practera/issues"
+  },
+  "homepage": "https://github.com/intersective/ng-practera#readme",
+  "keywords": [
+    "practera",
+    "intersective",
+    "ng-practera"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
-    "lint": "ng lint"
+    "sonar-test": "ng test --no-watch --code-coverage --browsers ChromeHeadless --karmaConfig=karma.conf.sonar.js",
+    "lint": "ng lint",
+    "publish": "cd dist/ng-practera && npm publish"
   },
   "private": true,
   "dependencies": {
@@ -15,10 +32,15 @@
     "@angular/compiler": "~11.1.0",
     "@angular/core": "~11.1.0",
     "@angular/forms": "~11.1.0",
+    "@angular/http": "^7.2.16",
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
+    "@ionic/angular": "^5.5.2",
+    "@types/lodash": "^4.14.168",
+    "lodash": "^4.17.20",
     "rxjs": "~6.6.0",
+    "ts-md5": "^1.2.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },
@@ -36,6 +58,8 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-sonarqube-unit-reporter": "0.0.23",
     "ng-packagr": "^11.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",

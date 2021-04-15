@@ -1,0 +1,38 @@
+<div class="div-logo" *ngIf="bradingLogo">
+  <prac-branding-logo [bradingLogo]="bradingLogo"></prac-branding-logo>
+</div>
+<div class="div-after-logo">
+  <p class="headline-6 black">Secure your account with SMS verification</p>
+  <p class="body-1 gray-1">Please enter your mobile number.</p>
+  <ion-list class="ion-margin ion-no-padding list">
+    <ion-item>
+      <ion-select class="subtitle-1 country-select" [(ngModel)]="countryModel" (ionChange)="updateCountry()">
+        <ion-select-option *ngFor="let countryCode of contactNumberFormat.countryCodes" [value]="countryCode.code">
+          {{countryCode.name}} <span *ngIf="contactNumberFormat.masks[countryCode.code].format">(
+            {{contactNumberFormat.masks[countryCode.code].format}} )</span></ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-input name="contactNumber" pattern="{{activeCountryModelInfo.pattern}}"
+        placeholder="{{activeCountryModelInfo.placeholder}}" [(ngModel)]="contactNumber"
+        (keydown)="disableArrowKeys($event)" (keyup)="formatContactNumber()" class="subtitle-1 gray-1" required
+        type="text" placeholder="Mobile number">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="clearfix"></div>
+  <ion-button class="button" (click)="registerMFA()" shape="round" color="primary" expand="full"
+    [disabled]="!contactNumber || isRegistering">
+    <ng-container *ngIf="!isRegistering">Register phone</ng-container>
+    <ng-container *ngIf="isRegistering">Registering...</ng-container>
+  </ion-button>
+  <div class="text-split">
+    <span>
+      <ion-text class="ion-margin-end">wrong account? </ion-text>
+    </span>
+    <a class="cursor-pointer" (click)="loginClick()">click here</a>
+  </div>
+  <div class="powered-by">
+    <a>Powered by</a><img alt="practera logo" src="/assets/logo.svg" height="25" class="img-inline">
+  </div>
+</div>
