@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { UtilsService } from '../services/utils/utils.service';
 import { BrowserStorageService } from '../services/storage/storage.service';
@@ -9,7 +9,7 @@ import { NotificationService } from '../services/notification/notification.servi
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
 
   showLogin: boolean;
   showForgotPassword: boolean;
@@ -30,9 +30,6 @@ export class AuthComponent implements OnInit {
     this.showForgotPassword = false;
     this.showMFARegister = false;
     this.showMFAVerify = false;
-  }
-
-  ngOnInit(): void {
   }
 
   backToLoginCallBack(data: any): void {
@@ -62,6 +59,7 @@ export class AuthComponent implements OnInit {
     }
     // If API didn't return MFA messages, emit the response
     this.successCallBack.emit(loginResponse);
+    return null;
   }
 
   forgotPasswordSuccessCallBack(data: any): any {
@@ -144,12 +142,6 @@ export class AuthComponent implements OnInit {
       this.showForgotPassword = false;
       this.showMFARegister = false;
       this.showMFAVerify = true;
-      break;
-      default:
-      this.showLogin = true;
-      this.showForgotPassword = false;
-      this.showMFARegister = false;
-      this.showMFAVerify = false;
       break;
     }
   }

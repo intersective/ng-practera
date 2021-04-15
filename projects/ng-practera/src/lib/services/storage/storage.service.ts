@@ -20,7 +20,7 @@ export interface Config {
 
 export class BrowserStorageService {
   public memoryCache: any;
-  private keyPrefix = 'ngPractera';
+  private readonly keyPrefix = 'ngPractera';
 
   constructor(@Inject(BROWSER_STORAGE) public storage: Storage) {}
 
