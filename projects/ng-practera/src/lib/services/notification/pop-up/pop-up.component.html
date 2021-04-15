@@ -1,17 +1,17 @@
-<ion-content color="light" text-center>
+<ng-container>
+
   <ng-container>
-
-    <ng-container>
-      <div class="div-logo"></div>
-      <div class="div-after-logo">
-        <p>We have sent an email to "<em>{{ data.email }}</em>" with a link to log into the system - please check your inbox. </p>
-        <p>If you haven't received an email in a few minutes, please make sure the email you entered is correct and check your spam folder. Thank you.</p>
-      </div>
-    </ng-container>
-
+    <div class="div-logo"></div>
+    <div class="div-after-logo">
+      <p>We have sent an email to "<em>{{ data.email }}</em>" with a link to log into the system - please check your
+        inbox. </p>
+      <p>If you haven't received an email in a few minutes, please make sure the email you entered is correct and check
+        your spam folder. Thank you.</p>
+    </div>
   </ng-container>
-  <div class="div-after-logo">
-    <ion-button class="button" id="btn-popup-confirm" (click)="confirmed()" shape="round" color="primary" expand="full">OK</ion-button>
-  </div>
 
-</ion-content>
+</ng-container>
+<div class="div-after-logo">
+  <ion-button class="button" id="btn-popup-confirm" (click)="confirmed()" shape="round" color="primary" expand="full">OK
+  </ion-button>
+</div>

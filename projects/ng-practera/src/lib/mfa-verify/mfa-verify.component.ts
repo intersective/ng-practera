@@ -13,8 +13,8 @@ export class MfaVerifyComponent implements OnInit {
 
   @Input() bradingLogo = '';
   @Input() internalUse = false;
-  @Output() verifySuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
-  @Output() sendSMSSuccessCallBack?: EventEmitter<any> = new EventEmitter<any>();
+  @Output() verifySuccessCallBack: EventEmitter<any> = new EventEmitter<any>();
+  @Output() sendSMSSuccessCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() verifyClickCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() sendSMSClickCallBack?: EventEmitter<any> = new EventEmitter<any>();

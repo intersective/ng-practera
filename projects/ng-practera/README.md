@@ -88,7 +88,7 @@ Workflows are combination of pages work as one unit. Workflows always calling AP
   [bradingLogo]="customLogo"
   (successCallBack)="successCallBack($event)" 
   (errorCallBack)="errorCallBack($event)"></prac-auth>
-
+</ion-content>
 ```
 
 # Pages

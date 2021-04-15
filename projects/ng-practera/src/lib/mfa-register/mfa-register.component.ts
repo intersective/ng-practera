@@ -12,7 +12,7 @@ export class MfaRegisterComponent implements OnInit {
 
   @Input() bradingLogo = '';
   @Input() internalUse = false;
-  @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
+  @Output() successCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() registerClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
   @Output() loginClickCallBack: EventEmitter<any> = new EventEmitter<any>();

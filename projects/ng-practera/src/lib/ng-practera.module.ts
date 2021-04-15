@@ -13,6 +13,7 @@ import { TermsConditionsPreviewComponent } from './terms-conditions-preview/term
 import { DirectLinkComponent } from './direct-link/direct-link.component';
 import { NgPracteraService, LibConfig, LibConfigService } from './ng-practera.service';
 import { AuthComponent } from './auth/auth.component';
+import { PopUpComponent } from './services/notification/pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthComponent } from './auth/auth.component';
     RegisterComponent,
     TermsConditionsPreviewComponent,
     DirectLinkComponent,
-    AuthComponent],
+    AuthComponent,
+    PopUpComponent],
   imports: [
     IonicModule,
     CommonModule,
@@ -33,7 +35,8 @@ import { AuthComponent } from './auth/auth.component';
     ReactiveFormsModule,
   ],
   entryComponents: [
-    TermsConditionsPreviewComponent
+    TermsConditionsPreviewComponent,
+    PopUpComponent
   ],
   exports: [LoginComponent,
     BrandingLogoComponent,

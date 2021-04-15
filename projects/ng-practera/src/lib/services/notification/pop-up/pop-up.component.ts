@@ -7,7 +7,9 @@ import { ModalController } from '@ionic/angular';
 })
 export class PopUpComponent {
   type = '';
-  data = {};
+  data = {
+    email: ''
+  };
 
   constructor(
     public modalController: ModalController

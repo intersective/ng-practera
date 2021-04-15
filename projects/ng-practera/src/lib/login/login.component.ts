@@ -15,7 +15,7 @@ export class LoginComponent {
 
   @Input() bradingLogo = '';
   @Input() internalUse = false;
-  @Output() successCallBack?: EventEmitter<any> = new EventEmitter<any>();
+  @Output() successCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() errorCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() forgotPasswordCallBack: EventEmitter<any> = new EventEmitter<any>();
   @Output() loginClickCallBack?: EventEmitter<any> = new EventEmitter<any>();
