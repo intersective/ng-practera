@@ -1,11 +1,19 @@
 import { Injectable, Inject, InjectionToken } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
 import { BrowserStorageService } from './services/storage/storage.service';
+// @TODO Update to correct one after sdk publish to npm.
+import { PracteraSDK } from '../../../../node_modules/@practera/practera-sdk/lib';
 
 export const LibConfigService = new InjectionToken<LibConfig>('LibConfig');
 
 export interface LibConfig {
-  env: string;
+  loginApiUrl?: string;
+  coreApiUrl?: string;
+  chatApiUrl?: string;
+  graphqlUrl?: string;
+  loginAppUrl?: string;
+  apiKey?: string;
+  appkey?: string;
   callApi: boolean;
 }
 
@@ -66,8 +74,17 @@ export class NgPracteraService {
 
   constructor(
     private readonly storage: BrowserStorageService,
-    @Inject(LibConfigService) private config: LibConfig
-  ) { }
+    @Inject(LibConfigService) private config: LibConfig,
+    private practeraSDK: PracteraSDK
+  ) {
+    this.practeraSDK = new PracteraSDK({
+      apiKey: config.apiKey,
+      appkey: config.appkey,
+      loginApiUrl: config.loginApiUrl,
+      coreApiUrl: config.coreApiUrl,
+      loginAppUrl: config.loginAppUrl
+    });
+  }
 
   /**
    * Method will return library config set when library import to an app from module.
